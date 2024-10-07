@@ -1,0 +1,35 @@
+APILIKASI PERPUSTAKAAN DIGITAL 
+Menggunakan Framework LARAVEL 9 minimal Php 8.2
+
+Alat tempur 
+1. Webserver ( saya menggunakan WampServer) -> https://wampserver.aviatechno.net/
+2. Composer ( pada saat install pilih php versi 8.2 jika webservernya WampServer, selain itu tinggal next, next ) ->https://getcomposer.org/download/
+3. Code Editor ( saya menggunakan VsCode ) -> https://code.visualstudio.com/
+
+Tutorial setting di localhost
+
+1. Buat foler dan Extract File pusdigv9.zip di folder C:\wamp64\www\folder kalian ( jika menggunakan WampServer, selain itu menyesuaikan) 
+2. Buka code Editor kesayangan, jangan lupa Web Server nya aktifkan terlebih dahulu.
+3. Setting database dengan membuka file .env ( ubah nama database sesuai selera )
+4. Buka PhpMyAdmin ( buat database baru, samakan dengan yang di file .env) -> http://localhost/phpmyadmin/index.php
+3. Buka Terminal, kemudian jalankan perintah php artisan migrate, selanjutnya jalankan perintah php artisan db:seed
+   ( Alternatif lainnya tinggal import aja file pusdigv9(import sql).sql ke phpmyadmin)
+5. Jalankan Aplikasi, Ketikan perintah php artisan serve
+6. Buka web browser ketik http://127.0.0.1:8000/
+7. Aplikasi siap digunakan.
+
+User default
+
+Admin
+email	: admin@gmail.com
+password: 12345678
+
+User Anggota
+email	: user1@gmail.com
+password: 12345678
+
+Tutorial Upload ke HOSTING
+https://youtu.be/8izLXvQw_Z8?si=LhFfqAtb-HgBMP9_
+
+   
+
