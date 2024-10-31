@@ -60,7 +60,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Jumlah halaman</label>
+                                    <abel for="exampleInputEmail1">Jumlah halaman</abel>
                                     <input id="jml_halaman" type="number"
                                         class="form-control @error('jml_halaman') is-invalid @enderror"
                                         name="jml_halaman" value="{{ $dt->jml_halaman }}"

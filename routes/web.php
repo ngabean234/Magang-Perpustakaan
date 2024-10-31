@@ -26,6 +26,7 @@ use App\Http\Controllers\AllbookController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\GalleryController;
 
 Route::get('/', function () {
     return redirect('login');
@@ -33,31 +34,42 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth'], function () {
 
     //dashboard
     Route::get('dashboard', [DashboardController::class, 'index']);
 
     //category
     Route::get('kategory', [CategoryController::class, 'index']);
-    Route::get('kategory/edit/{id}',[CategoryController::class, 'edit']);
-    Route::post('kategory/add',[CategoryController::class, 'store']);
+    Route::get('kategory/edit/{id}', [CategoryController::class, 'edit']);
+    Route::post('kategory/add', [CategoryController::class, 'store']);
     Route::get('kategory/edit/{id}', [CategoryController::class, 'edit']);
     Route::put('kategory/edit/update/{id}', [CategoryController::class, 'update']);
-    Route::delete('kategory/delete/{id}',[CategoryController::class, 'delete']);
+    Route::delete('kategory/delete/{id}', [CategoryController::class, 'delete']);
     Route::get('category/book/{id}', [CategoryController::class, 'postbyCategory']);
 
     //book
-    Route::get('book',[BookController::class, 'index']);
-    Route::get('book/add',[BookController::class, 'add']);
-    Route::post('book/add/store',[BookController::class, 'store']);
-    Route::get('book/detail/{id}',[BookController::class, 'detail']);
-    Route::get('book/details/{id}',[BookController::class, 'details']);
+    Route::get('book', [BookController::class, 'index']);
+    Route::get('book/add', [BookController::class, 'add']);
+    Route::post('book/add/store', [BookController::class, 'store']);
+    Route::get('book/detail/{id}', [BookController::class, 'detail']);
+    Route::get('book/details/{id}', [BookController::class, 'details']);
     Route::get('book/read/{id}', [BookController::class, 'read']);
-    Route::get('book/edit/{id}',[BookController::class, 'edit']);
-    Route::put('book/edit/update/{id}',[BookController::class, 'update']);
-    Route::delete('book/delete/{id}',[BookController::class, 'delete']);
+    Route::get('book/edit/{id}', [BookController::class, 'edit']);
+    Route::put('book/edit/update/{id}', [BookController::class, 'update']);
+    Route::delete('book/delete/{id}', [BookController::class, 'delete']);
     Route::get('book/verify/{id}', [BookController::class, 'verify']);
+
+    //gallery
+    // Route::get('gallery',[GalleryController::class, 'index']);
+    Route::get('gallery/add', [GalleryController::class, 'add'])->name('gallery.add');
+    Route::post('gallery/store', [GalleryController::class, 'store'])->name('gallery.store');
+
+
+
+
+    // Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+    // Route::post('/gallery', [GalleryController::class, 'store'])->name('gallery.store');
 
     //about
     Route::get('about', [AboutController::class, 'index']);
@@ -67,10 +79,13 @@ Route::group(['middleware' => 'auth'], function(){
     //Route::post('sumbang/add/store',[SumbangController::class, 'store']);
 
     //chat
-    Route::get('chat',[ChatController::class, 'index']);
+    Route::get('chat', [ChatController::class, 'index']);
 
     //books
-    Route::get('books',[AllbookController::class, 'index']);
+    Route::get('books', [AllbookController::class, 'index']);
+
+    //galeris
+    Route::get('galeris', [GalleryController::class, 'index']);
 
     //serach
     Route::post('autocomplete/search', [AllbookController::class, 'livesearch'])->name('autocomplete.search');
@@ -80,7 +95,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('post/{post}/comment', [BookController::class, 'addreview'])->name('post.comment.add');
 
     //anggota
-
     Route::get('anggota', [AnggotaController::class, 'index']);
     Route::get('anggota/add', [AnggotaController::class, 'add']);
     Route::post('anggota/add/store', [AnggotaController::class, 'store']);
@@ -88,18 +102,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('anggota/ubahprofile', [AnggotaController::class, 'updateprofile']);
     Route::put('anggota/ubahpassword', [AnggotaController::class, 'updatepassword']);
     Route::get('profile', [AnggotaController::class, 'profile']);
-    Route::delete('anggota/delete/{id}',[AnggotaController::class, 'delete']);
+    Route::delete('anggota/delete/{id}', [AnggotaController::class, 'delete']);
     Route::get('anggota/block/{id}', [AnggotaController::class, 'blockanggota']);
     Route::get('anggota/aktifkan/{id}', [AnggotaController::class, 'verifyanggota']);
 
     //review
     Route::get('review', [ReviewController::class, 'index']);
-    Route::get('review/{id}',[ReviewController::class, 'review']);
-    Route::delete('review/delete/{id}',[ReviewController::class, 'delete']);
+    Route::get('review/{id}', [ReviewController::class, 'review']);
+    Route::delete('review/delete/{id}', [ReviewController::class, 'delete']);
     Route::post('balas/{post}/comment', [ReviewController::class, 'store'])->name('balas.review.store');
-
-
-
 });
 
 Route::get('/home', function () {
@@ -111,4 +122,4 @@ Route::get('/keluar', function () {
     return redirect('/');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -117,7 +117,7 @@
                                     <hr>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Embed Flipbook</label>
+                                    <label for="exampleInputEmail1">File Buku</label>
                                     <input id="embed" type="text"
                                         class="form-control @error('embed') is-invalid @enderror" name="embed"
                                         value="{{ old('embed') }}" placeholder="contoh : https://anyflip.com/zmfry/mkte/" required autocomplete="off">
