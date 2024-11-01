@@ -22,7 +22,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Judul</th>
-                                    <th>Deskripsi</th>
+                                    <th>Author</th>
                                     <th>Gambar</th>
                                     <th>Dibuat</th>
                                     <th>Aksi</th>
@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $gallery->title }}</td>
-                                    <td>{{ Str::limit($gallery->description, 50) }}</td>
+                                    <td>{{ $gallery->author }}</td>
                                     <td>
                                         <img src="{{ asset($gallery->image_path) }}" alt="{{ $gallery->title }}" width="100">
                                     </td>
@@ -54,7 +54,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Judul</th>
-                                    <th>Deskripsi</th>
+                                    <th>Author</th>
                                     <th>Gambar</th>
                                     <th>Dibuat</th>
                                     <th>Aksi</th>

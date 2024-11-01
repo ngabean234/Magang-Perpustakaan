@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\Session;
 class GalleryController extends Controller
 {
     public function index()
-{
-    $title = 'Daftar Galeri'; // atau isi sesuai kebutuhan
-    $galleries = Gallery::all();
-    return view('galeris.index', compact('title', 'galleries'));
-}
-
-
+    {
+        $title = 'Daftar Galeri'; // atau isi sesuai kebutuhan
+        $galleries = Gallery::all();
+        return view('galeris.index', compact('title', 'galleries'));
+    }
     public function create()
     {
-        return view('galeris.create');
+        $title = 'Tambah Galeri';
+        return view('galeris.create', compact('title'));
     }
+
 
     public function store(Request $request)
     {
@@ -30,7 +30,7 @@ class GalleryController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imageName = time().'.'.$request->image->extension();
+        $imageName = time() . '.' . $request->image->extension();
         $request->image->move(public_path('gallery'), $imageName);
 
         Gallery::create([
@@ -41,11 +41,13 @@ class GalleryController extends Controller
 
         return redirect()->route('galeris.index')->with('success', 'Image added successfully');
     }
-
-    public function show(Gallery $galeri)
+    public function show($id)
     {
-        return view('galeris.show', compact('galeri'));
+        $gallery = Gallery::findOrFail($id); // Mengambil data galeri berdasarkan ID
+        $title = 'Detail Galeri'; // Atur judul yang diinginkan
+        return view('galeris.show', compact('gallery', 'title')); // Mengirim data ke view
     }
+    
 
     public function edit(Gallery $galeri)
     {
@@ -61,7 +63,7 @@ class GalleryController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imageName = time().'.'.$request->image->extension();
+            $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('gallery'), $imageName);
             $galeri->image_path = 'gallery/' . $imageName;
         }
@@ -85,4 +87,3 @@ class GalleryController extends Controller
         return redirect()->route('galeris.index')->with('success', 'Image deleted successfully');
     }
 }
-

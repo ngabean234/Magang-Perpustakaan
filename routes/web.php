@@ -61,9 +61,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('book/verify/{id}', [BookController::class, 'verify']);
 
     //galeri
-    Route::get('galeri', [GalleryController::class, 'index']);
-    Route::get('galeri/add', [GalleryController::class, 'add']);
-    Route::post('galeri/add/store', [GalleryController::class, 'store']);
+    Route::get('galeris/create', [BookController::class, 'create']);
+    Route::get('galeris/{id}', [GalleryController::class, 'show']);
+
+    // Route::get('galeri', [GalleryController::class, 'index']);
+    // Route::get('galeri/add', [GalleryController::class, 'add']);
+    // Route::post('galeri/add/store', [GalleryController::class, 'store']);
 
     //about
     Route::get('about', [AboutController::class, 'index']);
@@ -79,7 +82,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('books', [AllbookController::class, 'index']);
 
     //galeri
-
     Route::resource('galeris', GalleryController::class);
 
     //serach
