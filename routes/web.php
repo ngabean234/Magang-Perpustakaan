@@ -60,16 +60,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('book/delete/{id}', [BookController::class, 'delete']);
     Route::get('book/verify/{id}', [BookController::class, 'verify']);
 
-    //gallery
-    // Route::get('gallery',[GalleryController::class, 'index']);
-    Route::get('gallery/add', [GalleryController::class, 'add'])->name('gallery.add');
-    Route::post('gallery/store', [GalleryController::class, 'store'])->name('gallery.store');
-
-
-
-
-    // Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
-    // Route::post('/gallery', [GalleryController::class, 'store'])->name('gallery.store');
+    //galeri
+    Route::get('galeri', [GalleryController::class, 'index']);
+    Route::get('galeri/add', [GalleryController::class, 'add']);
+    Route::post('galeri/add/store', [GalleryController::class, 'store']);
 
     //about
     Route::get('about', [AboutController::class, 'index']);
@@ -84,8 +78,9 @@ Route::group(['middleware' => 'auth'], function () {
     //books
     Route::get('books', [AllbookController::class, 'index']);
 
-    //galeris
-    Route::get('galeris', [GalleryController::class, 'index']);
+    //galeri
+
+    Route::resource('galeris', GalleryController::class);
 
     //serach
     Route::post('autocomplete/search', [AllbookController::class, 'livesearch'])->name('autocomplete.search');

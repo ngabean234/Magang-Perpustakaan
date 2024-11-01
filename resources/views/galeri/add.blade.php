@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box box-warning">
-            <form role="form" method="post" action="{{ url('gallery/add/store') }}" enctype="multipart/form-data">
+            <form role="form" method="post" action="{{ url('galeri/add/store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-8">

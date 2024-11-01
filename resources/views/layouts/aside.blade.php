@@ -44,12 +44,12 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview menu-open">
-                    <a href="{{url('gallery')}}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
+                    <a href="{{url('galeris')}}" class="nav-link">
+                        <i class="nav-icon fas fa-image"></i>
                         <p>Galeri</p>
                     </a>
                 </li>
-                 <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview menu-open">
                     <a href="{{url('kategory')}}" class="nav-link">
                         <i class="nav-icon fas fa-list"></i>
                         <p>Kategori</p>
@@ -90,14 +90,14 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview menu-open">
+                {{-- <li class="nav-item has-treeview menu-open">
                     <a href="{{url('/')}}" class="nav-link active">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Galeri
                         </p>
                     </a>
-                </li>
+                </li> --}}
 
                  <li class="nav-header">OTHER</li>
                 <li class="nav-item has-treeview menu-open">

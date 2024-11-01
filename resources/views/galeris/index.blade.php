@@ -1,64 +1,75 @@
 @extends('layouts.master')
 
 @section('content')
-@include('layouts.search')
+@if (Auth::user()->role_id == 1)
 <div class="row">
-    <!-- Desktop View -->
-    <div class="d-none d-md-block">
-        <div class="row mt-2">
-            <div class="col">
-                <a class="btn btn-primary btn-sm btn-flat float-left" href="{{ route('gallery.index') }}"> 
-                    <i class="fa fa-image"></i> Semua Foto
-                </a>
+    <div class="col-md-12">
+        <div class="box box-warning">
+            <div class="box-header" style="margin-top: 20px; margin-left: 2px;">
+                <p>
+                    <a href="{{ route('galeris.create') }}" class="btn btn-primary btn-flat"><i class="fa fa-plus"></i> Tambah</a>
+                </p>
             </div>
-        </div>
-        <div class="row mt-3">
-            @foreach ($galleries as $gallery)
-            <div class="col-md-3">
-                <a href="{{ route('gallery.details', $gallery->id) }}" style="color: black">
-                    <div class="card shadow card-gallery">
-                        <img src="{{ Storage::url($gallery->image_path) }}" class="card-img-top" height="350px" alt="{{ $gallery->title }}">
-                        <div class="card-body">
-                            <h6 style="font-size: 18px">{{ $gallery->title }}</h6>
-                            <small style="font-size: 14px">{{ $gallery->description }}</small>
-                        </div>
+            <div class="card">
+                <div class="card-header" style="background-color: var(--blue); color: white;">
+                    <h3 class="card-title">{{ $title }}</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="table table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Judul</th>
+                                    <th>Deskripsi</th>
+                                    <th>Gambar</th>
+                                    <th>Dibuat</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($galleries as $key => $gallery)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $gallery->title }}</td>
+                                    <td>{{ Str::limit($gallery->description, 50) }}</td>
+                                    <td>
+                                        <img src="{{ asset($gallery->image_path) }}" alt="{{ $gallery->title }}" width="100">
+                                    </td>
+                                    <td>{{ $gallery->created_at->format('d F Y') }}</td>
+                                    <td>
+                                        <a href="{{ route('galeris.edit', $gallery->id) }}" class="btn btn-sm btn-flat btn-success"><i class="fa fa-edit"></i></a>
+                                        <form action="{{ route('galeris.destroy', $gallery->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-flat btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus galeri ini?')"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                        <a href="{{ route('galeris.show', $gallery->id) }}" class="btn btn-sm btn-flat btn-warning"><i class="fa fa-eye"></i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Judul</th>
+                                    <th>Deskripsi</th>
+                                    <th>Gambar</th>
+                                    <th>Dibuat</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
-                </a>
+                </div>
+                <!-- /.card-body -->
             </div>
-            @endforeach
-        </div>
-    </div>
-
-    <!-- Mobile View -->
-    <div class="d-sm-block d-md-none">
-        <div class="row mt-2">
-            <div class="col">
-                <a class="btn btn-primary btn-sm btn-flat float-left" href="{{ route('gallery.index') }}"> 
-                    <i class="fa fa-image"></i> Semua Foto
-                </a>
-            </div>
-        </div>
-        <div class="row mt-3">
-            @foreach ($galleries as $gallery)
-            <div class="col-6">
-                <a href="{{ route('gallery.details', $gallery->id) }}" style="color: black">
-                    <div class="card shadow card-gallery">
-                        <img src="{{ Storage::url($gallery->image_path) }}" height="200px" class="card-img-top" alt="{{ $gallery->title }}">
-                        <div class="card-body">
-                            <h6 style="font-size: 14px">{{ $gallery->title }}</h6>
-                            <small style="font-size: 12px">{{ $gallery->description }}</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            @endforeach
+            <!-- /.card -->
         </div>
     </div>
 </div>
-
-<!-- Pagination -->
-<div class="row justify-content-center mt-4">
-    {!! $galleries->links() !!}
-</div>
-
+@else
+    @include('layouts.404')
+@endif
 @endsection

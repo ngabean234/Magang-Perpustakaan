@@ -7,7 +7,7 @@
         <div class="box box-warning">
             <div class="box-header" style="margin-top: 20px;margin-left: 2px">
                 <p>
-                    <a href="{{ url('gallery/add') }}" class="btn btn-primary btn-flat"><i class="fa fa-plus"></i>
+                    <a href="{{ url('galeri/add') }}" class="btn btn-primary btn-flat"><i class="fa fa-plus"></i>
                         Tambah</a>
                 </p>
             </div>
@@ -26,7 +26,7 @@
                                     <th>Deskripsi</th>
                                     <th>Gambar</th>
                                     <th>Dibuat</th>
-                                    <th>action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,7 +58,7 @@
                                     <th>Deskripsi</th>
                                     <th>Gambar</th>
                                     <th>Dibuat</th>
-                                    <th>action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </tfoot>
                         </table>
