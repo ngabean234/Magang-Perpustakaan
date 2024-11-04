@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Gallery;
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class DashboardController extends Controller
         $kategori = Category::all();
         $book = Book::where('user_id', 1)->orderBy('view_count','desc')->limit(8)->get();
         $books = Book::get()->count();
+        $galeri = Gallery::get()->count();
         $categories = Category::get()->count();
         $anggota = User::where('role_id', 2)->count();
         $comment = Comment::get()->count();
@@ -49,6 +51,6 @@ class DashboardController extends Controller
 
         $ageavg = $mostFrequentAge->umur;
         
-        return view('dashboard.index', compact('title','kategori','book','ip','data','books','categories','anggota','hari_ini','bulan_ini','tahun_ini','comment','lk','pr','ageavg'));
+        return view('dashboard.index', compact('title','kategori','galeri', 'book','ip','data','books','categories','anggota','hari_ini','bulan_ini','tahun_ini','comment','lk','pr','ageavg'));
     }
 }

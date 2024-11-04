@@ -16,7 +16,7 @@ class GalleryController extends Controller
         return view('galeris.index', compact('title', 'galleries'));
     }
     public function create()
-    {
+    { 
         $title = 'Tambah Galeri';
         return view('galeris.create', compact('title'));
     }

@@ -20,7 +20,7 @@
         <!-- small box for gallery -->
         <div class="small-box bg-primary"> <!-- Ganti warna sesuai keinginan -->
             <div class="inner">
-                {{-- <h3>{{ $categories }}</h3> --}}
+                <h3>{{ $galeri }}</h3>
                 <p>Galeri</p>
             </div>
             <div class="icon">
@@ -33,6 +33,11 @@
     <!-- ./col -->
     <div class="col-lg-3 col-6">
         <!-- small box -->
+
+
+
+
+
         <div class="small-box bg-success">
             <div class="inner">
                 <h3>{{ $categories }}</h3>
