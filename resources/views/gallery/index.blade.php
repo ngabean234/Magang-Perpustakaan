@@ -11,7 +11,7 @@
                         <div class="card-header">
                             <h3>Detail Galeri</h3>
                             <hr>
-                            <small>Posted By <strong>Admin</strong> at {{ \Carbon\Carbon::parse($gallery->created_at)->diffForHumans() }}</small>
+                            <small>Posted By <strong>{{ $gallery->author }}</strong> at {{ \Carbon\Carbon::parse($gallery->created_at)->diffForHumans() }}</small>
                         </div>
                         <div class="card-body">
                             <div class="mt-3 text-center">
@@ -19,7 +19,6 @@
                             </div>
                             <p>{{ $gallery->description }}</p> <!-- Teks deskripsi di sebelah kiri -->
                         </div>
-                        
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -36,12 +35,17 @@
                                         <td>{{ $gallery->title }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Fotografer</th>
+                                        <th>Dibuat</th>
+                                        <td>:</td>
+                                        <td>{{ date('d F Y', strtotime($gallery->created_at)) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Penulis</th>
                                         <td>:</td>
                                         <td>{{ $gallery->author }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Diambil Tanggal</th>
+                                        <th>Tanggal Diambil</th>
                                         <td>:</td>
                                         <td>{{ date('d F Y', strtotime($gallery->date_taken)) }}</td>
                                     </tr>
@@ -49,11 +53,6 @@
                                         <th>Lokasi</th>
                                         <td>:</td>
                                         <td>{{ $gallery->location }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Dibuat</th>
-                                        <td>:</td>
-                                        <td>{{ date('d F Y', strtotime($gallery->created_at)) }}</td>
                                     </tr>
                                 </tbody>
                             </table>

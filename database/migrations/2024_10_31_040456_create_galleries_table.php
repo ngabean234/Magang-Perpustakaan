@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('image_path');
+            $table->string('author'); // Penulis/Pengambil Foto
+            $table->date('date_taken'); // Tanggal Pengambilan
+            $table->string('location'); // Lokasi
             $table->timestamps();
         });
-        
     }
 
     /**

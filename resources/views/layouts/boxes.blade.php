@@ -14,6 +14,22 @@
             <a href="{{ url('book') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
+
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box for gallery -->
+        <div class="small-box bg-primary"> <!-- Ganti warna sesuai keinginan -->
+            <div class="inner">
+                {{-- <h3>{{ $categories }}</h3> --}}
+                <p>Galeri</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-image"></i>
+            </div>
+            <a href="{{ url('galeris') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    
     <!-- ./col -->
     <div class="col-lg-3 col-6">
         <!-- small box -->
@@ -148,5 +164,5 @@
                 </tfoot>
             </table>
         </div>
-    </div>
+    </div> 
 </div>

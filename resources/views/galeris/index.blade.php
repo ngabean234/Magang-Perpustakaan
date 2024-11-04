@@ -14,16 +14,17 @@
                 <div class="card-header" style="background-color: var(--blue); color: white;">
                     <h3 class="card-title">{{ $title }}</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                     <div class="table table-responsive">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Judul</th>
-                                    <th>Author</th>
+                                    <th>Nama Foto</th>
                                     <th>Gambar</th>
+                                    <th>Fotografer</th>
+                                    <th>Tanggal Pengambilan Foto</th>
+                                    <th>Lokasi</th>
                                     <th>Dibuat</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -33,10 +34,12 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $gallery->title }}</td>
-                                    <td>{{ $gallery->author }}</td>
                                     <td>
                                         <img src="{{ asset($gallery->image_path) }}" alt="{{ $gallery->title }}" width="100">
                                     </td>
+                                    <td>{{ $gallery->author }}</td> <!-- Menampilkan Penulis -->
+                                    <td>{{ \Carbon\Carbon::parse($gallery->date_taken)->format('d F Y') }}</td> <!-- Menggunakan nama kolom yang benar -->
+                                    <td>{{ $gallery->location }}</td> <!-- Menggunakan nama kolom yang benar -->
                                     <td>{{ $gallery->created_at->format('d F Y') }}</td>
                                     <td>
                                         <a href="{{ route('galeris.edit', $gallery->id) }}" class="btn btn-sm btn-flat btn-success"><i class="fa fa-edit"></i></a>
@@ -53,9 +56,11 @@
                             <tfoot>
                                 <tr>
                                     <th>No</th>
-                                    <th>Judul</th>
-                                    <th>Author</th>
+                                    <th>Nama Foto</th>
                                     <th>Gambar</th>
+                                    <th>Fotografer</th>
+                                    <th>Tanggal Pengambilan Foto</th>
+                                    <th>Lokasi</th>
                                     <th>Dibuat</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -63,9 +68,7 @@
                         </table>
                     </div>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
         </div>
     </div>
 </div>

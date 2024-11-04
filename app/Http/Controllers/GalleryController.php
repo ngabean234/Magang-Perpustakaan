@@ -26,7 +26,10 @@ class GalleryController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'author' => 'required', // Validasi untuk kolom author
             'description' => 'required',
+            'date_taken' => 'required|date', // Validasi untuk kolom date_taken
+            'location' => 'required', // Validasi untuk kolom location
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -35,24 +38,33 @@ class GalleryController extends Controller
 
         Gallery::create([
             'title' => $request->title,
+            'author' => $request->author, // Menyimpan nilai author
             'description' => $request->description,
+            'date_taken' => $request->date_taken, // Menyimpan nilai date_taken
+            'location' => $request->location, // Menyimpan nilai location
             'image_path' => 'gallery/' . $imageName,
         ]);
 
         return redirect()->route('galeris.index')->with('success', 'Image added successfully');
     }
+
+
     public function show($id)
     {
         $gallery = Gallery::findOrFail($id); // Mengambil data galeri berdasarkan ID
         $title = 'Detail Galeri'; // Atur judul yang diinginkan
         return view('galeris.show', compact('gallery', 'title')); // Mengirim data ke view
     }
-    
+
+
+
 
     public function edit(Gallery $galeri)
     {
-        return view('galeris.edit', compact('galeri'));
+        $title = 'Edit Galeri'; // Atur judul sesuai kebutuhan
+        return view('galeris.edit', compact('galeri', 'title')); // Kirim galeri dan title ke view
     }
+
 
     public function update(Request $request, Gallery $galeri)
     {

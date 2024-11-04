@@ -12,5 +12,8 @@ class Gallery extends Model
         'title',
         'description',
         'image_path',
+        'author',
+        'date_taken',
+        'location',
     ];
 }
