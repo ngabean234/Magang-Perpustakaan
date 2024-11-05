@@ -17,7 +17,7 @@
                         <img src="{{ asset($gallery->image_path) }}" class="card-img-top" height="350px" alt="{{ $gallery->title }}">
                         <div class="card-body">
                             <h6 style="font-size: 18px">{{ $gallery->title }}</h6>
-                            <small style="text-align: center; font-size: 14px"> 
+                            <small style="text-center" style="font-size: 14px"> 
                                 <i class="fa fa-camera"></i> {{ $gallery->author }} <br>
                                 <i class="fa fa-calendar"></i> {{ date('d F Y', strtotime($gallery->date_taken)) }}
                             </small>
