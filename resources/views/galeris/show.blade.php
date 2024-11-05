@@ -15,10 +15,10 @@
                         </div>
                         <div class="card-body">
                             <div class="mt-3 text-center">
-                                <h5>Deskripsi</h5> <!-- Judul tetap di tengah -->
+                                <h5>Deskripsi</h5>
                             </div>
-                            <p>{{ strip_tags(html_entity_decode($gallery->description)) }}</p> <!-- Teks deskripsi di sebelah kiri tanpa tag HTML atau entitas -->
-                        </div>                                               
+                            <p>{!! nl2br(html_entity_decode($gallery->description)) !!}</p> <!-- Menampilkan deskripsi -->
+                        </div>                                                                       
                     </div>
                 </div>
                 <div class="col-md-4">

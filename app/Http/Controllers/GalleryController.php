@@ -21,7 +21,6 @@ class GalleryController extends Controller
         return view('galeris.create', compact('title'));
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
@@ -48,7 +47,6 @@ class GalleryController extends Controller
         return redirect()->route('galeris.index')->with('success', 'Image added successfully');
     }
 
-
     public function show($id)
     {
         $gallery = Gallery::findOrFail($id); // Mengambil data galeri berdasarkan ID
@@ -56,11 +54,9 @@ class GalleryController extends Controller
         return view('galeris.show', compact('gallery', 'title')); // Mengirim data ke view
     }
 
-
-
-
     public function edit(Gallery $galeri)
     {
+        
         $title = 'Edit Galeri'; // Atur judul sesuai kebutuhan
         return view('galeris.edit', compact('galeri', 'title')); // Kirim galeri dan title ke view
     }

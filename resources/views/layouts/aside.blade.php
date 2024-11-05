@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="{{url('/')}}" class="brand-link text-center">
         <i class="fas fa-book text-success fa-2x"></i>
-        <h4>E-library</h4>
+        <h4>Khazanah</h4>
     </a>
 
     <!-- Sidebar -->

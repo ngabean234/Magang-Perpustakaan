@@ -23,7 +23,7 @@
                                     <th>Nama Foto</th>
                                     <th>Gambar</th>
                                     <th>Fotografer</th>
-                                    <th>Tanggal Pengambilan Foto</th>
+                                    <th>Tanggal Ambil Foto</th>
                                     <th>Lokasi</th>
                                     <th>Dibuat</th>
                                     <th>Aksi</th>
@@ -59,7 +59,7 @@
                                     <th>Nama Foto</th>
                                     <th>Gambar</th>
                                     <th>Fotografer</th>
-                                    <th>Tanggal Pengambilan Foto</th>
+                                    <th>Tanggal Ambil Foto</th>
                                     <th>Lokasi</th>
                                     <th>Dibuat</th>
                                     <th>Aksi</th>

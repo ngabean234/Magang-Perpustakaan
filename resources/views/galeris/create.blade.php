@@ -57,9 +57,7 @@
                                     <label for="description">Deskripsi</label>
                                     <textarea class="textarea @error('description') is-invalid @enderror"
                                         placeholder="Place some text here" name="description"
-                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                        {{ e(old('description', $data->description ?? ''))   }}
-                                    </textarea>
+                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">@php echo trim(e(old('description', $galeri->description ?? ''))); @endphp</textarea>
                                     @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -67,7 +65,6 @@
                                     @enderror
                                 </div>
                                 
-
                                 {{-- <div class="form-group">
                                     <label for="description">Deskripsi</label>
                                     <textarea id="description" class="form-control @error('description') is-invalid @enderror" placeholder="Masukkan deskripsi" name="description" rows="5" style="border: 1px solid #ced4da; border-radius: 0.25rem; padding: 10px;">{{ old('description') }}</textarea>
