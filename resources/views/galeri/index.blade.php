@@ -37,7 +37,9 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <img src="{{ asset($gallery->image_path) }}" class="img-fluid mb-3" alt="{{ $gallery->title }}">
+                            <td>
+                                <img src="{{ asset($gallery->image_path) }}" alt="{{ $gallery->title }}" class="image">
+                            </td>
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Fotografer</th>
