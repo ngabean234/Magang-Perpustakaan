@@ -27,7 +27,7 @@
             </div>
 
             <!-- Modal for each photo -->
-            <div class="modal fade" id="modal-{{ $gallery->id }}" tabindex="-1" role="dialog">
+            {{-- <div class="modal fade" id="modal-{{ $gallery->id }}" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             @endforeach
         </div>
     </div>

@@ -41,4 +41,6 @@
         object-fit: cover; /* Memastikan gambar menutupi area yang ditentukan */
         border-radius: 5px; /* Tambahkan radius jika ingin sudut gambar membulat */
     }
+
+    
 </style>
