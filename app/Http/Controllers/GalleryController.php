@@ -16,7 +16,7 @@ class GalleryController extends Controller
         return view('galeris.index', compact('title', 'galleries'));
     }
     public function create()
-    { 
+    {
         $title = 'Tambah Galeri';
         return view('galeris.create', compact('title'));
     }
@@ -56,11 +56,10 @@ class GalleryController extends Controller
 
     public function edit(Gallery $galeri)
     {
-        
+
         $title = 'Edit Galeri'; // Atur judul sesuai kebutuhan
         return view('galeris.edit', compact('galeri', 'title')); // Kirim galeri dan title ke view
     }
-
 
     public function update(Request $request, Gallery $galeri)
     {
@@ -83,6 +82,26 @@ class GalleryController extends Controller
         ]);
 
         return redirect()->route('galeris.index')->with('success', 'Image updated successfully');
+    }
+
+    public function userIndex()
+    {
+        $title = 'Galeri Foto';
+        $galleries = Gallery::orderBy('created_at', 'desc')->paginate(12);
+        return view('galeri.index', compact('title', 'galleries'));
+    }
+
+    public function userSearch(Request $request)
+    {
+        $title = 'Hasil Pencarian';
+        $query = $request->input('query');
+        $galleries = Gallery::where('title', 'LIKE', "%$query%")
+            ->orWhere('description', 'LIKE', "%$query%")
+            ->orWhere('author', 'LIKE', "%$query%")
+            ->orWhere('location', 'LIKE', "%$query%")
+            ->paginate(12);
+
+        return view('galeri.index', compact('galleries', 'query', 'title'));
     }
 
     public function destroy(Gallery $galeri)
