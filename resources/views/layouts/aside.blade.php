@@ -92,7 +92,7 @@
                 </li>
                 <li class="nav-item has-treeview menu-open">
                     <a href="{{url('/')}}" class="nav-link active">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fas fa-image"></i>
                         <p>
                             Galeri
                         </p>

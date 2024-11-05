@@ -64,7 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('galeris', [GalleryController::class, 'index']);
     Route::get('galeris/create', [GalleryController::class, 'create']);
     Route::get('galeris/{id}', [GalleryController::class, 'show']);
-    Route::get('/galeri/{id}', [GalleryController::class, 'show']);
+    
 
     //about
     Route::get('about', [AboutController::class, 'index']);
