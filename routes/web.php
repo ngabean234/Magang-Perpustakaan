@@ -65,11 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('galeris/create', [GalleryController::class, 'create']);
     Route::get('galeris/{id}', [GalleryController::class, 'show']);
     Route::get('galeri', [GalleryController::class, 'userIndex'])->name('galeri.index');
-    Route::get('galeri/search', [GalleryController::class, 'userSearch'])->name('galeri.search');
     Route::get('galeri/details/{id}', [GalleryController::class, 'show'])->name('galeri.show');
-    Route::post('galeri/autocomplete', [GalleryController::class, 'livesearch'])->name('galeri.autocomplete');
-    Route::post('galeri/autocomplete', [GalleryController::class, 'livesearch'])->name('galeri.autocomplete');
-Route::get('galeri/search', [GalleryController::class, 'userSearch'])->name('galeri.search');
+ 
 
 
     //about
@@ -90,7 +87,9 @@ Route::get('galeri/search', [GalleryController::class, 'userSearch'])->name('gal
 
     //serach
     Route::post('autocomplete/search', [AllbookController::class, 'livesearch'])->name('autocomplete.search');
+    Route::post('galeri/autocomplete', [GalleryController::class, 'livesearch'])->name('galeri.autocomplete');
     Route::get('search', [SearchController::class, 'search']);
+    Route::get('galeri/search', [GalleryController::class, 'userSearch'])->name('galeri.search');
 
     //review
     Route::post('post/{post}/comment', [BookController::class, 'addreview'])->name('post.comment.add');
