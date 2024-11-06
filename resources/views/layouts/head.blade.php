@@ -1,50 +1,57 @@
 <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{$title}}</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/select2/css/select2.min.css')}}">
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{ $title }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/jqvmap/jqvmap.min.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('adminlte/dist/css/adminlte.min.css')}}">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/daterangepicker/daterangepicker.css')}}">
-  <!-- summernote -->
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/summernote/summernote-bs4.css')}}">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/select2/css/select2.min.css')}}">
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
-  <link rel="stylesheet" href="{{ asset('css/yuda.css') }}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/select2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+<!-- Tempusdominus Bootstrap 4 -->
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+<!-- iCheck -->
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+<!-- JQVMap -->
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/jqvmap/jqvmap.min.css') }}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.css') }}">
+<!-- summernote -->
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.css') }}">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ asset('css/yuda.css') }}">
+<!-- Google Font: Source Sans Pro -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  <style>
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<style>
     .gallery-image {
-        width: 100%; /* Atur lebar gambar menjadi 100% dari kontainer */
-        height: 90px; /* Atur tinggi gambar sesuai kebutuhan */
-        object-fit: cover; /* Memastikan gambar menutupi area yang ditentukan */
-        border-radius: 5px; /* Tambahkan radius jika ingin sudut gambar membulat */
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
     }
-    .gallery-image {
-        width: 100%; /* Atur lebar gambar menjadi 100% dari kontainer */
-        height: 200px; /* Atur tinggi gambar sesuai kebutuhan */
-        object-fit: cover; /* Memastikan gambar menutupi area yang ditentukan */
-        border-radius: 5px; /* Tambahkan radius jika ingin sudut gambar membulat */
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .fade-out {
+        animation: fadeOut 0.5s;
+    }
+
+    @keyframes fadeOut {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
     }
 </style>

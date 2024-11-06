@@ -56,9 +56,9 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer">
+        {{-- <div class="card-footer">
             <a href="{{ route('galeri.index') }}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Kembali ke Galeri</a>
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection

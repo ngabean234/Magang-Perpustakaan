@@ -35,7 +35,9 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $gallery->title }}</td>
                                     <td>
-                                        <img src="{{ asset($gallery->image_path) }}" alt="{{ $gallery->title }}" width="100">
+                                        <img src="{{ asset($gallery->image_path) }}" 
+                                            alt="{{ $gallery->title }}" 
+                                            style="width: 100px; height: 70px; object-fit: cover;">
                                     </td>
                                     <td>{{ $gallery->author }}</td> <!-- Menampilkan Penulis -->
                                     <td>{{ \Carbon\Carbon::parse($gallery->date_taken)->format('d F Y') }}</td> <!-- Menggunakan nama kolom yang benar -->

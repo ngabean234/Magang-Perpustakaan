@@ -90,9 +90,9 @@ $com = \App\Models\Comment::whereDay('created_at','=', date('d'))->where('role_i
                                         class="fa fa-list"></i> Detail</a>
                             </div>
                             <div class="col-6">
-                                <a href="{{ url('/keluar') }}" class="dropdown-item dropdown-footer"
-                                    onclick="return confirm('Apa anda yakin ingin keluar?')"> <i
-                                        class="fa fa-arrow-right"></i> Logout</a>
+                                <a href="{{ url('/keluar') }}" id="logout-btn" class="dropdown-item dropdown-footer">
+                                    <i class="fa fa-arrow-right"></i> Logout
+                                </a>
                             </div>
                         </div>
             </div>

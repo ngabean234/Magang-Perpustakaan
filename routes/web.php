@@ -60,17 +60,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('book/delete/{id}', [BookController::class, 'delete']);
     Route::get('book/verify/{id}', [BookController::class, 'verify']);
 
-    //galeri
+    //galeris
     Route::get('galeris', [GalleryController::class, 'index']);
     Route::get('galeris/create', [GalleryController::class, 'create']);
     Route::get('galeris/{id}', [GalleryController::class, 'show']);
     Route::get('galeri', [GalleryController::class, 'userIndex'])->name('galeri.index');
     Route::get('galeri/details/{id}', [GalleryController::class, 'show'])->name('galeri.show');
     Route::get('/galeri/search', [GalleryController::class, 'userSearch'])->name('galeri.search');
-Route::post('/galeri/livesearch', [GalleryController::class, 'livesearch'])->name('galeri.autocomplete');
-Route::get('/galeri/details/{id}', [GalleryController::class, 'details'])->name('galeri.details');
- 
-
+    Route::post('/galeri/livesearch', [GalleryController::class, 'livesearch'])->name('galeri.autocomplete');
+    Route::get('/galeri/details/{id}', [GalleryController::class, 'details'])->name('galeri.details');
 
     //about
     Route::get('about', [AboutController::class, 'index']);
