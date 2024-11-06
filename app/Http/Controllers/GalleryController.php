@@ -48,11 +48,11 @@ class GalleryController extends Controller
     }
 
     public function show($id)
-{
-    $gallery = Gallery::findOrFail($id);
-    $title = 'Detail Galeri'; // Tambahkan variabel title
-    return view('galeris.details', compact('gallery', 'title'));
-}
+    {
+        $gallery = Gallery::findOrFail($id); // Mengambil data galeri berdasarkan ID
+        $title = 'Detail Galeri'; // Atur judul yang diinginkan
+        return view('galeris.show', compact('gallery', 'title')); // Mengirim data ke view
+    }
 
     public function edit(Gallery $galeri)
     {
@@ -140,6 +140,13 @@ class GalleryController extends Controller
 
         return view('galeri.index', compact('galleries', 'query', 'title'));
     }
+
+    public function details($id)
+{
+    $gallery = Gallery::findOrFail($id);
+    $title = 'Detail Foto';
+    return view('galeris.details', compact('gallery', 'title'));
+}
 
     public function destroy($id)
     {

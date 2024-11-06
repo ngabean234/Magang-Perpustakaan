@@ -68,6 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('galeri/details/{id}', [GalleryController::class, 'show'])->name('galeri.show');
     Route::get('/galeri/search', [GalleryController::class, 'userSearch'])->name('galeri.search');
 Route::post('/galeri/livesearch', [GalleryController::class, 'livesearch'])->name('galeri.autocomplete');
+Route::get('/galeri/details/{id}', [GalleryController::class, 'details'])->name('galeri.details');
  
 
 
