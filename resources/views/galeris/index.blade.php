@@ -43,11 +43,9 @@
                                     <td>{{ $gallery->created_at->format('d F Y') }}</td>
                                     <td>
                                         <a href="{{ route('galeris.edit', $gallery->id) }}" class="btn btn-sm btn-flat btn-success"><i class="fa fa-edit"></i></a>
-                                        <form action="{{ route('galeris.destroy', $gallery->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-flat btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus galeri ini?')"><i class="fa fa-trash"></i></button>
-                                        </form>
+                                        <a href="{{ route('galeris.destroy', $gallery->id) }}" class="btn btn-sm btn-flat btn-danger btn-hapus">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                         <a href="{{ route('galeris.show', $gallery->id) }}" class="btn btn-sm btn-flat btn-warning"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>

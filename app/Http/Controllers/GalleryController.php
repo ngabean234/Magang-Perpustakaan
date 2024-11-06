@@ -104,13 +104,22 @@ class GalleryController extends Controller
         return view('galeri.index', compact('galleries', 'query', 'title'));
     }
 
-    public function destroy(Gallery $galeri)
+    public function destroy($id)
     {
-        if (file_exists(public_path($galeri->image_path))) {
-            unlink(public_path($galeri->image_path));
-        }
-        $galeri->delete();
+        try {
+            $gallery = Gallery::findOrFail($id);
 
-        return redirect()->route('galeris.index')->with('success', 'Image deleted successfully');
+            // Hapus file gambar dari penyimpanan
+            if (file_exists(public_path($gallery->image_path))) {
+                unlink(public_path($gallery->image_path));
+            }
+
+            $gallery->delete();
+            Session::flash('sukses', 'Data berhasil dihapus !');
+        } catch (\Exception $e) {
+            Session::flash('gagal', 'Data gagal dihapus: ' . $e->getMessage());
+        }
+
+        return redirect()->route('galeris.index');
     }
 }
