@@ -22,10 +22,6 @@
 
 <div class="row">
     @if(isset($query))
-        <div class="col-12">
-            <h6 class="mt-2"> Ditemukan " {{ $galleries->count() }} " hasil dari pencarian " {{ $query }} "</h6>
-        </div>
-        
         @if($galleries->count() > 0)
             @foreach ($galleries as $gallery)
             <div class="col-md-4 col-sm-6 mb-4">
@@ -50,6 +46,7 @@
             @endforeach
         @else
             <div class="col-12">
+                <h6 class="mt-2"> Ditemukan " {{ $galleries->count() }} " hasil dari pencarian " {{ $query }} "</h6>
                 @include('layouts.notfound')
             </div>
         @endif
@@ -88,6 +85,7 @@
     </ul>
 </div>
 @endif
+
 
 @endsection
 
