@@ -4,7 +4,7 @@
 @include('layouts.search')
 <div class="row">
     <div class="d-none d-md-block">
-        <div class="row mt-2">
+        <div class="row">
             <div class="col">
                 <a class="btn btn-primary btn-sm btn-flat float-left" href="#"> 
                     <i class="fa fa-camera"></i> Semua Foto
@@ -14,21 +14,20 @@
         <div class="row mt-3">
             @if($galleries->count() > 0)
                 @foreach ($galleries as $gallery)
-                <div class="col-md-3">
+                <div class="col-md-4 mb-3">
                     <a href="{{ route('galeri.show', $gallery->id) }}" style="color: black">
-                        <div class="card shadow card-book">
+                        <div class="card shadow">
                             <img src="{{ asset($gallery->image_path) }}" 
-                                 class="card-img-top" 
-                                 alt="{{ $gallery->title }}" 
-                                 height="350px"
-                                 style="object-fit: cover;">
+                                 class="card-img-top gallery-image" 
+                                 alt="{{ $gallery->title }}">
                             <div class="card-body">
-                                <h6 style="font-size: 18px">{{ $gallery->title }}</h6>
-                                <small style="font-size: 14px">
-                                    <i class="fa fa-camera"></i> {{ $gallery->author }}
-                                    <br>
-                                    <i class="fa fa-map-marker"></i> {{ $gallery->location }}
-                                </small>
+                                <h5 class="card-title">{{ $gallery->title }}</h5>
+                                <p class="card-text">
+                                    <small>
+                                        <i class="fa fa-camera"></i> {{ $gallery->author }} <br>
+                                        <i class="fa fa-calendar"></i> {{ date('d F Y', strtotime($gallery->date_taken)) }}
+                                    </small>
+                                </p>
                             </div>
                         </div>
                     </a>
@@ -44,7 +43,7 @@
 
     <!-- Tampilan Mobile -->
     <div class="d-sm-block d-md-none">
-        <div class="row mt-2">
+        <div class="row">
             <div class="col">
                 <a class="btn btn-primary btn-sm btn-flat float-left" href="#"> 
                     <i class="fa fa-camera"></i> Semua Foto
@@ -54,21 +53,20 @@
         <div class="row mt-3">
             @if($galleries->count() > 0)
                 @foreach ($galleries as $gallery)
-                <div class="col-6">
+                <div class="col-6 mb-3">
                     <a href="{{ route('galeri.show', $gallery->id) }}" style="color: black">
-                        <div class="card shadow card-book">
+                        <div class="card shadow">
                             <img src="{{ asset($gallery->image_path) }}" 
-                                 height="200px" 
-                                 class="card-img-top" 
-                                 alt="{{ $gallery->title }}"
-                                 style="object-fit: cover;">
+                                 class="card-img-top gallery-image" 
+                                 alt="{{ $gallery->title }}">
                             <div class="card-body">
-                                <h6 style="font-size: 14px">{{ $gallery->title }}</h6>
-                                <small style="font-size: 11px">
-                                    <i class="fa fa-camera"></i> {{ $gallery->author }}
-                                    <br>
-                                    <i class="fa fa-map-marker"></i> {{ $gallery->location }}
-                                </small>
+                                <h6 class="card-title" style="font-size: 14px">{{ $gallery->title }}</h6>
+                                <p class="card-text">
+                                    <small style="font-size: 11px">
+                                        <i class="fa fa-camera"></i> {{ $gallery->author }} <br>
+                                        <i class="fa fa-calendar"></i> {{ date('d F Y', strtotime($gallery->date_taken)) }}
+                                    </small>
+                                </p>
                             </div>
                         </div>
                     </a>

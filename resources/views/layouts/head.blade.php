@@ -41,6 +41,14 @@
         object-fit: cover; /* Memastikan gambar menutupi area yang ditentukan */
         border-radius: 5px; /* Tambahkan radius jika ingin sudut gambar membulat */
     }
+</style>
 
-    
+
+<style>
+    .gallery-image {
+        width: 100%; /* Atur lebar gambar menjadi 100% dari kontainer */
+        height: 200px; /* Atur tinggi gambar sesuai kebutuhan */
+        object-fit: cover; /* Memastikan gambar menutupi area yang ditentukan */
+        border-radius: 5px; /* Tambahkan radius jika ingin sudut gambar membulat */
+    }
 </style>
