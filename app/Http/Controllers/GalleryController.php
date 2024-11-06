@@ -62,38 +62,38 @@ class GalleryController extends Controller
     }
 
     public function update(Request $request, Gallery $galeri)
-{
-    $request->validate([
-        'title' => 'required',
-        'author' => 'required',
-        'description' => 'required', 
-        'date_taken' => 'required|date',
-        'location' => 'required',
-        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    ]);
+    {
+        $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'description' => 'required',
+            'date_taken' => 'required|date',
+            'location' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    if ($request->hasFile('image')) {
-        // Hapus gambar lama jika ada
-        if (file_exists(public_path($galeri->image_path))) {
-            unlink(public_path($galeri->image_path));
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if (file_exists(public_path($galeri->image_path))) {
+                unlink(public_path($galeri->image_path));
+            }
+
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('gallery'), $imageName);
+            $galeri->image_path = 'gallery/' . $imageName;
         }
-        
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('gallery'), $imageName);
-        $galeri->image_path = 'gallery/' . $imageName;
+
+        $galeri->update([
+            'title' => $request->title,
+            'author' => $request->author,
+            'description' => $request->description,
+            'date_taken' => $request->date_taken,
+            'location' => $request->location,
+            'image_path' => $galeri->image_path,
+        ]);
+
+        return redirect()->route('galeris.index')->with('success', 'Gallery updated successfully');
     }
-
-    $galeri->update([
-        'title' => $request->title,
-        'author' => $request->author,
-        'description' => $request->description,
-        'date_taken' => $request->date_taken,
-        'location' => $request->location,
-        'image_path' => $galeri->image_path,
-    ]);
-
-    return redirect()->route('galeris.index')->with('success', 'Gallery updated successfully');
-}
 
     public function userIndex()
     {
@@ -107,17 +107,14 @@ class GalleryController extends Controller
         if ($request->get('query')) {
             $query = $request->get('query');
             $data = Gallery::where('title', 'LIKE', "%{$query}%")
-                ->orWhere('author', 'LIKE', "%{$query}%")
-                ->orWhere('location', 'LIKE', "%{$query}%")
                 ->limit(5)
                 ->get();
-
             $output = '<li class="list-group-item link-class">';
 
             foreach ($data as $row) {
                 $output .= '
             <img src="' . asset($row->image_path) . '" height="50" width="40" style="object-fit: cover;"/> 
-            <a style="font-size: 16px" href="' . route('galeri.show', $row->id) . '">' . $row->title . '</a>
+            <a style="font-size: 16px" href="' . route('galeri.details', $row->id) . '">' . $row->title . '</a>
             <br>
             <small><i class="fa fa-camera"></i> ' . $row->author . ' - <i class="fa fa-map-marker"></i> ' . $row->location . '</small>
             <hr>
@@ -142,11 +139,11 @@ class GalleryController extends Controller
     }
 
     public function details($id)
-{
-    $gallery = Gallery::findOrFail($id);
-    $title = 'Detail Foto';
-    return view('galeris.details', compact('gallery', 'title'));
-}
+    {
+        $gallery = Gallery::findOrFail($id);
+        $title = 'Detail Foto';
+        return view('galeris.details', compact('gallery', 'title'));
+    }
 
     public function destroy($id)
     {
