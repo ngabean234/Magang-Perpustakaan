@@ -25,7 +25,7 @@
     @if($galleries->count() > 0)
         @foreach ($galleries as $gallery)
         <div class="col-md-4 col-sm-6 mb-4">
-            <a href="{{ route('galeri.show', $gallery->id) }}" style="text-decoration: none; color: inherit;">
+            <a href="{{ route('galeris.show', $gallery->id) }}" style="text-decoration: none; color: inherit;">
                 <div class="card shadow-sm h-100">
                     <img src="{{ asset($gallery->image_path) }}" 
                          class="card-img-top gallery-image" 

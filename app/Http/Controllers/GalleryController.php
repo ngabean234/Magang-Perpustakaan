@@ -48,11 +48,11 @@ class GalleryController extends Controller
     }
 
     public function show($id)
-    {
-        $gallery = Gallery::findOrFail($id); // Mengambil data galeri berdasarkan ID
-        $title = 'Detail Galeri'; // Atur judul yang diinginkan
-        return view('galeris.show', compact('gallery', 'title')); // Mengirim data ke view
-    }
+{
+    $gallery = Gallery::findOrFail($id);
+    $title = 'Detail Galeri'; // Tambahkan variabel title
+    return view('galeris.details', compact('gallery', 'title'));
+}
 
     public function edit(Gallery $galeri)
     {
@@ -62,27 +62,38 @@ class GalleryController extends Controller
     }
 
     public function update(Request $request, Gallery $galeri)
-    {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+{
+    $request->validate([
+        'title' => 'required',
+        'author' => 'required',
+        'description' => 'required', 
+        'date_taken' => 'required|date',
+        'location' => 'required',
+        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
 
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('gallery'), $imageName);
-            $galeri->image_path = 'gallery/' . $imageName;
+    if ($request->hasFile('image')) {
+        // Hapus gambar lama jika ada
+        if (file_exists(public_path($galeri->image_path))) {
+            unlink(public_path($galeri->image_path));
         }
-
-        $galeri->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'image_path' => $galeri->image_path,
-        ]);
-
-        return redirect()->route('galeris.index')->with('success', 'Image updated successfully');
+        
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('gallery'), $imageName);
+        $galeri->image_path = 'gallery/' . $imageName;
     }
+
+    $galeri->update([
+        'title' => $request->title,
+        'author' => $request->author,
+        'description' => $request->description,
+        'date_taken' => $request->date_taken,
+        'location' => $request->location,
+        'image_path' => $galeri->image_path,
+    ]);
+
+    return redirect()->route('galeris.index')->with('success', 'Gallery updated successfully');
+}
 
     public function userIndex()
     {
