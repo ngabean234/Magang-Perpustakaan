@@ -1,71 +1,84 @@
 @extends('layouts.master')
 
 @section('content')
-
-<div class="row mt-3">
-    <div class="col-md-12">
-        <p class="text-center" style="font-size: 20px">Cari Foto</p>
-        <form id="searchForm" method="post">
-            @csrf
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" name="query" id="search" autocomplete="off" placeholder="Cari judul foto, fotografer, atau lokasi...">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-            <ul class="list-group" id="result"></ul>
-        </form>
-    </div>
-</div>
-<hr>
-
-<!-- Form pencarian yang sudah dibuat di atas -->
-
+@include('layouts.search')
 <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header" style="background-color: var(--blue); color: white">
-                <h3 class="card-title">
-                    @if(isset($query))
-                        Hasil Pencarian: "{{ $query }}" ({{ $galleries->total() }} hasil)
-                    @else
-                        Galeri Foto
-                    @endif
-                </h3>
+    <div class="d-none d-md-block">
+        <div class="row mt-2">
+            <div class="col">
+                <a class="btn btn-primary btn-sm btn-flat float-left" href="#"> 
+                    <i class="fa fa-camera"></i> Semua Foto
+                </a>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    @if($galleries->count() > 0)
-                        @foreach ($galleries as $gallery)
-                        <div class="col-md-4 mb-3">
-                            <a href="{{ route('galeri.show', $gallery->id) }}" style="color: black">
-                                <div class="card shadow">
-                                    <img src="{{ asset($gallery->image_path) }}" 
-                                         class="card-img-top" 
-                                         alt="{{ $gallery->title }}" 
-                                         style="height: 200px; object-fit: cover;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $gallery->title }}</h5>
-                                        <p class="card-text">
-                                            <small>
-                                                <i class="fa fa-camera"></i> {{ $gallery->author }} <br>
-                                                <i class="fa fa-calendar"></i> {{ date('d F Y', strtotime($gallery->date_taken)) }}
-                                            </small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
+        </div>
+        <div class="row mt-3">
+            @if($galleries->count() > 0)
+                @foreach ($galleries as $gallery)
+                <div class="col-md-3">
+                    <a href="{{ route('galeri.show', $gallery->id) }}" style="color: black">
+                        <div class="card shadow card-book">
+                            <img src="{{ asset($gallery->image_path) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ $gallery->title }}" 
+                                 height="350px"
+                                 style="object-fit: cover;">
+                            <div class="card-body">
+                                <h6 style="font-size: 18px">{{ $gallery->title }}</h6>
+                                <small style="font-size: 14px">
+                                    <i class="fa fa-camera"></i> {{ $gallery->author }}
+                                    <br>
+                                    <i class="fa fa-map-marker"></i> {{ $gallery->location }}
+                                </small>
+                            </div>
                         </div>
-                        @endforeach
-                    @else
-                        <div class="col-12 text-center">
-                            <p>Tidak ada hasil yang ditemukan.</p>
-                        </div>
-                    @endif
+                    </a>
                 </div>
+                @endforeach
+            @else
+                <div class="col-12 text-center">
+                    <p>Tidak ada hasil yang ditemukan.</p>
+                </div>
+            @endif
+        </div>
+    </div>
+
+    <!-- Tampilan Mobile -->
+    <div class="d-sm-block d-md-none">
+        <div class="row mt-2">
+            <div class="col">
+                <a class="btn btn-primary btn-sm btn-flat float-left" href="#"> 
+                    <i class="fa fa-camera"></i> Semua Foto
+                </a>
             </div>
+        </div>
+        <div class="row mt-3">
+            @if($galleries->count() > 0)
+                @foreach ($galleries as $gallery)
+                <div class="col-6">
+                    <a href="{{ route('galeri.show', $gallery->id) }}" style="color: black">
+                        <div class="card shadow card-book">
+                            <img src="{{ asset($gallery->image_path) }}" 
+                                 height="200px" 
+                                 class="card-img-top" 
+                                 alt="{{ $gallery->title }}"
+                                 style="object-fit: cover;">
+                            <div class="card-body">
+                                <h6 style="font-size: 14px">{{ $gallery->title }}</h6>
+                                <small style="font-size: 11px">
+                                    <i class="fa fa-camera"></i> {{ $gallery->author }}
+                                    <br>
+                                    <i class="fa fa-map-marker"></i> {{ $gallery->location }}
+                                </small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+            @else
+                <div class="col-12 text-center">
+                    <p>Tidak ada hasil yang ditemukan.</p>
+                </div>
+            @endif
         </div>
     </div>
 </div>
