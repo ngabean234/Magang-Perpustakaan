@@ -129,7 +129,7 @@ class GalleryController extends Controller
 
         return view('galeri.index', compact('galleries', 'query', 'title'));
     }
-    
+
     public function destroy($id)
     {
         try {

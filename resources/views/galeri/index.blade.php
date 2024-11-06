@@ -1,102 +1,64 @@
 @extends('layouts.master')
 
 @section('content')
-@include('layouts.search')
-<div class="row">
-    <div class="d-none d-md-block">
-        <div class="row">
-            <div class="col">
-                <a class="btn btn-primary btn-sm btn-flat float-left" href="#"> 
-                    <i class="fa fa-camera"></i> Semua Foto
-                </a>
+<div class="row mt-3">
+    <div class="col-md-12">
+        <p class="text-center" style="font-size: 20px">Cari Foto</p>
+        <form action="{{ route('galeri.search') }}" method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" id="searchGallery" autocomplete="off"
+                    placeholder="Cari Nama Foto ...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </div>
             </div>
-        </div>
-        <div class="row mt-3">
-            @if($galleries->count() > 0)
-                @foreach ($galleries as $gallery)
-                <div class="col-md-4 mb-3">
-                    <a href="{{ route('galeri.show', $gallery->id) }}" style="color: black">
-                        <div class="card shadow">
-                            <img src="{{ asset($gallery->image_path) }}" 
-                                 class="card-img-top gallery-image" 
-                                 alt="{{ $gallery->title }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $gallery->title }}</h5>
-                                <p class="card-text">
-                                    <small>
-                                        <i class="fa fa-camera"></i> {{ $gallery->author }} <br>
-                                        <i class="fa fa-calendar"></i> {{ date('d F Y', strtotime($gallery->date_taken)) }}
-                                    </small>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                @endforeach
-            @else
-                <div class="col-12 text-center">
-                    <p>Tidak ada hasil yang ditemukan.</p>
-                </div>
-            @endif
-        </div>
-    </div>
-
-    <!-- Tampilan Mobile -->
-    <div class="d-sm-block d-md-none">
-        <div class="row">
-            <div class="col">
-                <a class="btn btn-primary btn-sm btn-flat float-left" href="#"> 
-                    <i class="fa fa-camera"></i> Semua Foto
-                </a>
-            </div>
-        </div>
-        <div class="row mt-3">
-            @if($galleries->count() > 0)
-                @foreach ($galleries as $gallery)
-                <div class="col-6 mb-3">
-                    <a href="{{ route('galeri.show', $gallery->id) }}" style="color: black">
-                        <div class="card shadow">
-                            <img src="{{ asset($gallery->image_path) }}" 
-                                 class="card-img-top gallery-image" 
-                                 alt="{{ $gallery->title }}">
-                            <div class="card-body">
-                                <h6 class="card-title" style="font-size: 14px">{{ $gallery->title }}</h6>
-                                <p class="card-text">
-                                    <small style="font-size: 11px">
-                                        <i class="fa fa-camera"></i> {{ $gallery->author }} <br>
-                                        <i class="fa fa-calendar"></i> {{ date('d F Y', strtotime($gallery->date_taken)) }}
-                                    </small>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                @endforeach
-            @else
-                <div class="col-12 text-center">
-                    <p>Tidak ada hasil yang ditemukan.</p>
-                </div>
-            @endif
-        </div>
+            {{ csrf_field() }}
+            <ul class="list-group" id="galleryResult"></ul>
+        </form>
     </div>
 </div>
 
-<div class="row align-center">
-    <ul class="pagination">
-        <li class="page-item">
-            {!! $galleries->links() !!}
-        </li>
-    </ul>
+<hr>
+
+<div class="row">
+    <!-- Menampilkan galeri jika ada -->
+    @if($galleries->count() > 0)
+        @foreach ($galleries as $gallery)
+        <div class="col-md-4 col-sm-6 mb-4">
+            <a href="{{ route('galeri.show', $gallery->id) }}" style="text-decoration: none; color: inherit;">
+                <div class="card shadow-sm h-100">
+                    <img src="{{ asset($gallery->image_path) }}" 
+                         class="card-img-top gallery-image" 
+                         alt="{{ $gallery->title }}"
+                         style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $gallery->title }}</h5>
+                        <p class="card-text text-muted">
+                            <small>
+                                <i class="fa fa-camera"></i> {{ $gallery->author }}<br>
+                                <i class="fa fa-calendar"></i> {{ date('d F Y', strtotime($gallery->date_taken)) }}
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        @endforeach
+    @else
+        <div class="col-12 text-center">
+            <p>Tidak ada hasil yang ditemukan.</p>
+        </div>
+    @endif
 </div>
 
 @endsection
 
 @section('scripts')
 <script>
-    $(document).ready(function() {
-        $('#search').keyup(function() {
+    $(document).ready(function () {
+        $('#searchGallery').keyup(function () {
             var query = $(this).val();
-            if (query != '') {
+            if (query !== '') {
                 var _token = $('input[name="_token"]').val();
                 $.ajax({
                     url: "{{ route('galeri.autocomplete') }}",
@@ -105,18 +67,18 @@
                         query: query,
                         _token: _token
                     },
-                    success: function(data) {
-                        $('#result').fadeIn();
-                        $('#result').html(data);
+                    success: function (data) {
+                        $('#galleryResult').fadeIn();
+                        $('#galleryResult').html(data);
                     }
                 });
             } else {
-                $('#result').fadeOut();
+                $('#galleryResult').fadeOut();
             }
         });
 
-        $(document).on('click', 'li', function() {
-            $('#result').fadeOut();
+        $(document).on('click', 'li', function () {
+            $('#galleryResult').fadeOut();
         });
     });
 </script>
