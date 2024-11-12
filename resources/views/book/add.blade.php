@@ -116,7 +116,24 @@
                                     </center>
                                     <hr>
                                 </div>
+
+                                {{-- <div class="form-group">
+                                    <label for="fileBuku">File Buku (PDF)</label>
+                                    <input id="fileBuku" type="file" class="form-control @error('file_buku') is-invalid @enderror" name="file_buku" accept=".pdf" required>
+                                
+                                    @error('file_buku')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>*masukan file PDF</strong>
+                                    </span>
+                                    @enderror
+                                </div> --}}
+                                
                                 <div class="form-group">
+                                    <label for="pdf">Upload PDF</label>
+                                    <input type="file" class="form-control" name="pdf" id="pdf" accept=".pdf" required>
+                                </div>
+                                
+                                {{-- <div class="form-group">
                                     <label for="exampleInputEmail1">File Buku</label>
                                     <input id="embed" type="text"
                                         class="form-control @error('embed') is-invalid @enderror" name="embed"
@@ -127,7 +144,7 @@
                                         <strong>*masukan link embed</strong>
                                     </span>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <hr>
                                 <div class="form-group" style="margin-top: -15px">
                                     <label>Category</label>
