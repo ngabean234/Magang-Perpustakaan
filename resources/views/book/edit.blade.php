@@ -114,18 +114,26 @@
                                     </center>
                                     <hr>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Embed Flipbook</label>
-                                    <input id="embed" type="text"
-                                        class="form-control @error('embed') is-invalid @enderror" name="embed"
-                                        value="{{ $dt->embed }}" placeholder="Masukan Embed Flipbook" autocomplete="off">
 
-                                    @error('embed')
+                                <div class="form-group">
+                                    <label for="file_buku">File Buku (PDF)</label>
+                                    <input id="file_buku" type="file"
+                                           class="form-control @error('file_buku') is-invalid @enderror" name="file_buku" accept=".pdf"
+                                           value="{{ old('file_buku') }}" autocomplete="off">
+                                    
+                                    @if(isset($data->file_path)) 
+                                        <!-- Menampilkan file PDF yang sudah ada jika ada -->
+                                        <p>File PDF sudah ada: <a href="{{ asset('filebook/' . $data->file_path) }}" target="_blank">Lihat PDF</a></p>
+                                    @endif
+                                    
+                                    @error('file_buku')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
+                                
+                                
                                 <hr>
                                 <div class="form-group" style="margin-top: -15px">
                                     <label>Category</label>

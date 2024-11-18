@@ -16,7 +16,7 @@
                             </small>
                         </div>
                         <div class="card-body">
-                            <iframe style="width:100%;height:745px" src="{{$dt->embed}}"  seamless="seamless" scrolling="no" 
+                            <iframe style="width:100%;height:745px" src="{{url('filebook', $dt->file_path)}}"  seamless="seamless" scrolling="no" 
                                 frameborder="0" allowtransparency="true" allowfullscreen="true" >
                             </iframe>
                         </div>
