@@ -117,22 +117,29 @@
 
                                 <div class="form-group">
                                     <label for="file_buku">File Buku (PDF)</label>
-                                    <input id="file_buku" type="file"
-                                           class="form-control @error('file_buku') is-invalid @enderror" name="file_buku" accept=".pdf"
-                                           value="{{ old('file_buku') }}" autocomplete="off">
-                                    
-                                    @if(isset($data->file_path)) 
-                                        <!-- Menampilkan file PDF yang sudah ada jika ada -->
-                                        <p>File PDF sudah ada: <a href="{{ asset('filebook/' . $data->file_path) }}" target="_blank">Lihat PDF</a></p>
+                                    @if($dt->file_path)
+                                    <div class="mb-2">
+                                        <div class="d-flex align-items-center">
+                                            <i class="far fa-file-pdf text-danger mr-2" style="font-size: 24px;"></i>
+                                            <span class="mr-2">{{ $dt->file_path }}</span>
+                                        </div>
+                                    </div>
                                     @endif
+
+                                    <input type="file" 
+                                           class="form-control @error('file_buku') is-invalid @enderror" 
+                                           name="file_buku" 
+                                           accept=".pdf">
+                                    <small class="form-text text-muted">
+                                        Biarkan kosong jika tidak ingin mengubah file PDF
+                                    </small>
                                     
                                     @error('file_buku')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                     @enderror
                                 </div>
-                                
                                 
                                 <hr>
                                 <div class="form-group" style="margin-top: -15px">

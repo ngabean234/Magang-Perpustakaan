@@ -65,9 +65,8 @@ class BookController extends Controller
 
         // Menyimpan data buku ke database
         $data->save();
-
         // Flash message untuk sukses
-        \Session::flash('sukses', 'Data berhasil dibuat');
+        session()->flash('sukses', 'Data berhasil dibuat');
 
         // Redirect kembali ke halaman daftar buku
         return redirect('book');
@@ -110,58 +109,51 @@ class BookController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'judul' => 'required',
-        'file_buku' => 'nullable|mimes:pdf|max:10240',  // Validasi file PDF (opsional)
-    ]);
+    {
+        $request->validate([
+            'judul' => 'required',
+            'ringkasan' => 'required',
+            'cover' => 'nullable|image|max:10240',  // Validasi cover opsional
+            'file_buku' => 'nullable|mimes:pdf|max:10240',  // Validasi file PDF opsional
+        ]);
 
-    $data = Book::findOrFail($id);
-    $data->judul = $request->judul;
-    $data->slug = Str::slug($request->judul);
-    $data->user_id = Auth::id();
-    $data->ringkasan = $request->ringkasan;
-    $data->penulis = $request->penulis;
-    $data->penerbit = $request->penerbit;
-    $data->jml_halaman = $request->jml_halaman;
-    $data->category_id = $request->category_id;
+        $data = Book::findOrFail($id);
+        $data->judul = $request->judul;
+        $data->slug = Str::slug($request->judul);
+        $data->user_id = Auth::id();
+        $data->ringkasan = $request->ringkasan;
+        $data->penulis = $request->penulis;
+        $data->penerbit = $request->penerbit;
+        $data->jml_halaman = $request->jml_halaman;
+        $data->category_id = $request->category_id;
 
-    // Mengelola file cover
-    $cover = $request->file('cover');
-    if ($cover) {
-        // Hapus cover lama jika ada
-        if ($data->cover && Storage::exists('public/cover/' . $data->cover)) {
-            Storage::delete('public/cover/' . $data->cover);
+        // Mengelola file cover jika ada upload baru
+        if ($cover = $request->file('cover')) {
+            // Hapus cover lama jika ada
+            if ($data->cover && file_exists(public_path('cover/' . $data->cover))) {
+                unlink(public_path('cover/' . $data->cover));
+            }
+            $namacover = $cover->getClientOriginalName();
+            $cover->move(public_path('cover'), $namacover);
+            $data->cover = $namacover;
         }
 
-        $namacover = $cover->getClientOriginalName();
-        $cover->move(public_path('cover'), $namacover);
-        $data->cover = $namacover;
-    }
-
-    // Mengelola file PDF
-    $file = $request->file('file_buku');
-    if ($file) {
-        // Jika file PDF baru di-upload, hapus file lama
-        if ($data->file_path && Storage::exists('public/filebook/' . $data->file_path)) {
-            Storage::delete('public/filebook/' . $data->file_path);
+        // Mengelola file PDF jika ada upload baru
+        if ($file = $request->file('file_buku')) {
+            // Hapus file lama jika ada
+            if ($data->file_path && file_exists(public_path('filebook/' . $data->file_path))) {
+                unlink(public_path('filebook/' . $data->file_path));
+            }
+            $namafile = $file->getClientOriginalName();
+            $file->move(public_path('filebook'), $namafile);
+            $data->file_path = $namafile;
         }
 
-        $namafile = $file->getClientOriginalName();
-        $file->move(public_path('filebook'), $namafile);
-        $data->file_path = $namafile;
+        $data->save();
+
+        session()->flash('sukses', 'Data berhasil diubah');
+        return redirect('book');
     }
-
-    // Jika tidak ada file baru, tetap gunakan file lama
-    // $data->file_path tetap dipertahankan jika tidak ada perubahan file
-
-    $data->save();
-
-    \Session::flash('sukses', 'Data Buku berhasil diubah!');
-
-    return redirect('book');
-}
-
 
     public function addreview(Request $request, Book $post)
     {
@@ -177,7 +169,7 @@ class BookController extends Controller
 
         $data->save();
 
-        \Session::flash('sukses', 'Terimakasih atas reviewnya!');
+        session()->flash('sukses', 'Terimakasih atas reviewnya!');
 
         return redirect()->back();
     }
@@ -195,11 +187,10 @@ class BookController extends Controller
             if ($book->file_path && Storage::exists('public/filebook/' . $book->file_path)) {
                 Storage::delete('public/filebook/' . $book->file_path);
             }
-
             $book->delete();
-            \Session::flash('sukses', 'Data berhasil dihapus!');
+            session()->flash('sukses', 'Data berhasil dihapus!');
         } catch (\Exception $e) {
-            \Session::flash('gagal', 'Terjadi kesalahan: ' . $e->getMessage());
+            session()->flash('gagal', 'Terjadi kesalahan: ' . $e->getMessage());
         }
 
         return redirect()->back();

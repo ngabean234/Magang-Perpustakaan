@@ -37,7 +37,7 @@ class CategoryController extends Controller
 
         $data->save();
 
-        \Session::flash('sukses', 'Data Kategori berhasil dibuat !');
+        session()->flash('sukses', 'Data Kategori berhasil dibuat !');
 
         return redirect('kategory');
     }
@@ -71,7 +71,7 @@ class CategoryController extends Controller
         //dd($data);
         $data->save();
 
-        \Session::flash('sukses', 'Data Kategori berhasil diubah !');
+        session()->flash('sukses', 'Data Kategori berhasil diubah !');
 
         return redirect('kategory');
     }
@@ -92,12 +92,12 @@ class CategoryController extends Controller
         $category = Category::find($id);
         try
         {
-           $category->delete();
-            \Session::flash('sukses', 'Data berhasil dihapus !');
-
+            $category->delete();
+            session()->flash('sukses', 'Data berhasil dihapus !');
+            
         } catch(\Exception $e)
         {
-            \Session::flash('gagal', 'Data masih terhubung dengan post');
+            session()->flash('gagal', 'Data masih terhubung dengan post');
         }
 
         return redirect()->back();
