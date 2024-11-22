@@ -28,6 +28,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PresensiController;
 
 Route::get('/', function () {
     return redirect('login');
@@ -115,6 +116,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('review/{id}', [ReviewController::class, 'review']);
     Route::delete('review/delete/{id}', [ReviewController::class, 'delete']);
     Route::post('balas/{post}/comment', [ReviewController::class, 'store'])->name('balas.review.store');
+
+    //presensi
+    Route::post('/presensi', [PresensiController::class, 'store'])->name('presensi.store');
 });
 
 Route::get('/home', function () {
