@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PresensiController;
 
 Route::get('/', function () {
     return redirect('login');
@@ -70,7 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/galeri/livesearch', [GalleryController::class, 'livesearch'])->name('galeri.autocomplete');
     Route::get('/galeri/details/{id}', [GalleryController::class, 'details'])->name('galeri.details');
     Route::post('/galeri/autocomplete', [GalleryController::class, 'livesearch'])->name('galeri.autocomplete');
-Route::get('/galeri/search', [GalleryController::class, 'search'])->name('galeri.search');
+    Route::get('/galeri/search', [GalleryController::class, 'search'])->name('galeri.search');
 
     //about
     Route::get('about', [AboutController::class, 'index']);
@@ -114,6 +116,9 @@ Route::get('/galeri/search', [GalleryController::class, 'search'])->name('galeri
     Route::get('review/{id}', [ReviewController::class, 'review']);
     Route::delete('review/delete/{id}', [ReviewController::class, 'delete']);
     Route::post('balas/{post}/comment', [ReviewController::class, 'store'])->name('balas.review.store');
+
+    //presensi
+    Route::post('/presensi', [PresensiController::class, 'store'])->name('presensi.store');
 });
 
 Route::get('/home', function () {

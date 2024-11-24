@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <div class="card shadow-lg">
         <div class="card-header">
-            <h3 class="card-title">Detail Galeri</h3>
+            <h3 class="card-title">Detail Foto</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -28,7 +28,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Informasi Galeri</h5>
+                            <h5 class="card-title">Informasi Foto</h5>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">

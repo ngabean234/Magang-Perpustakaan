@@ -51,7 +51,7 @@ class AnggotaController extends Controller
         //dd($data);
         $data->save();
 
-        \Session::flash('sukses', 'Data berhasil ditambahkan');
+        session()->flash('sukses', 'Data berhasil ditambahkan');
 
         return redirect('anggota');
     }
@@ -83,7 +83,7 @@ class AnggotaController extends Controller
         }
         $data->save();
 
-        \Session::flash('sukses', 'Data berhasil ubah');
+        session()->flash('sukses', 'Data berhasil ubah');
 
         return redirect()->back();
     }
@@ -110,7 +110,7 @@ class AnggotaController extends Controller
         //verifikasi user berdasarkan id
         DB::table('users')->where('id', $id)->update(['is_block' => 1]);
 
-        \Session::flash('sukses', 'User berhasil di block');
+        session()->flash('sukses', 'User berhasil di block');
         return redirect()->back();
     }
 
@@ -119,7 +119,7 @@ class AnggotaController extends Controller
         //verifikasi user berdasarkan id
         DB::table('users')->where('id', $id)->update(['is_block' => 0]);
 
-        \Session::flash('sukses', 'User berhasil di aktifkan kembali');
+        session()->flash('sukses', 'User berhasil di aktifkan kembali');
         return redirect()->back();
     }
 
@@ -127,7 +127,7 @@ class AnggotaController extends Controller
     {
         User::find($id)->delete();
 
-        \Session::flash('sukses', 'Data berhasil di hapus');
+        session()->flash('sukses', 'Data berhasil di hapus');
 
         return redirect()->back();
     }
