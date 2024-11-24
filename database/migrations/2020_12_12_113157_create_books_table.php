@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->string('judul');
             $table->string('slug');
             $table->string('cover');
-            $table->string('embed');
+            $table->string('file_path');
             $table->integer('view_count')->default(0);
             $table->text('ringkasan');
             $table->string('penulis');

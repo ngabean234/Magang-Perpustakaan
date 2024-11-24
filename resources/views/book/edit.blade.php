@@ -114,18 +114,33 @@
                                     </center>
                                     <hr>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Embed Flipbook</label>
-                                    <input id="embed" type="text"
-                                        class="form-control @error('embed') is-invalid @enderror" name="embed"
-                                        value="{{ $dt->embed }}" placeholder="Masukan Embed Flipbook" autocomplete="off">
 
-                                    @error('embed')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <div class="form-group">
+                                    <label for="file_buku">File Buku (PDF)</label>
+                                    @if($dt->file_path)
+                                    <div class="mb-2">
+                                        <div class="d-flex align-items-center">
+                                            <i class="far fa-file-pdf text-danger mr-2" style="font-size: 24px;"></i>
+                                            <span class="mr-2">{{ $dt->file_path }}</span>
+                                        </div>
+                                    </div>
+                                    @endif
+
+                                    <input type="file" 
+                                           class="form-control @error('file_buku') is-invalid @enderror" 
+                                           name="file_buku" 
+                                           accept=".pdf">
+                                    <small class="form-text text-muted">
+                                        Biarkan kosong jika tidak ingin mengubah file PDF
+                                    </small>
+                                    
+                                    @error('file_buku')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                     @enderror
                                 </div>
+                                
                                 <hr>
                                 <div class="form-group" style="margin-top: -15px">
                                     <label>Category</label>

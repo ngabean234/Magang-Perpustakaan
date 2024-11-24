@@ -117,14 +117,14 @@
                                     <hr>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">File Buku</label>
-                                    <input id="embed" type="text"
-                                        class="form-control @error('embed') is-invalid @enderror" name="embed"
-                                        value="{{ old('embed') }}" placeholder="contoh : https://anyflip.com/zmfry/mkte/" required autocomplete="off">
-
-                                    @error('embed')
+                                    <label for="file_buku">File Buku (PDF)</label>
+                                    <input id="file_buku" type="file"
+                                        class="form-control @error('file_buku') is-invalid @enderror" name="file_buku" accept=".pdf"
+                                        value="{{ old('file_buku') }}" required autocomplete="off">
+                                
+                                    @error('file_buku')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>*masukan link embed</strong>
+                                        <strong>*masukan file PDF</strong>
                                     </span>
                                     @enderror
                                 </div>
