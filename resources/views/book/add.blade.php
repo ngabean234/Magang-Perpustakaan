@@ -116,18 +116,30 @@
                                     </center>
                                     <hr>
                                 </div>
-                                <div class="form-group">
-                                    <label for="file_buku">File Buku (PDF)</label>
-                                    <input id="file_buku" type="file"
-                                        class="form-control @error('file_buku') is-invalid @enderror" name="file_buku" accept=".pdf"
-                                        value="{{ old('file_buku') }}" required autocomplete="off">
+
+                                {{-- <div class="form-group">
+                                    <label for="fileBuku">File Buku (PDF)</label>
+                                    <input id="fileBuku" type="file" class="form-control @error('file_buku') is-invalid @enderror" name="file_buku" accept=".pdf" required>
                                 
                                     @error('file_buku')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>*masukan file PDF</strong>
                                     </span>
                                     @enderror
-                                </div>
+                                </div> --}}
+                                
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">File Buku</label>
+                                    <input id="embed" type="text"
+                                        class="form-control @error('embed') is-invalid @enderror" name="embed"
+                                        value="{{ old('embed') }}" placeholder="contoh : https://anyflip.com/zmfry/mkte/" required autocomplete="off">
+
+                                    @error('embed')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>*masukan file PDF</strong>
+                                    </span>
+                                    @enderror
+                                </div> --}}
                                 <hr>
                                 <div class="form-group" style="margin-top: -15px">
                                     <label>Category</label>
