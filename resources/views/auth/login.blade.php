@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KHAZANAH KOTA MAGELANG - Perpustakaan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -26,7 +27,7 @@
                     <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
                     <li class="nav-item"><a class="nav-link" href="#buku">Buku</a></li>
                     <li class="nav-item"><a class="nav-link" href="#fasilitas">Fasilitas</a></li>
-                    <li class="nav-item"><a class="btn btn-primary" href="{{ url('/login') }}">Masuk</a></li>
+                    {{-- <li class="nav-item"><a class="btn btn-primary" href="{{ url('/login') }}">Masuk</a></li> --}}
                 </ul>
             </div>
         </div>
@@ -41,9 +42,59 @@
                 Jelajahi Dunia Dengan Membaca<br>
                 Buku Di Perpustakaan
             </p>
-            <a  class="btn btn-primary">Baca Buku</a>
+            <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Baca Buku</a>
         </div>
     </section>
+
+    <!-- Modal Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <div class="text-center mb-4">
+                        <h3 class="fw-bold">Selamat Datang Di Perpustakaan</h3>
+                        <h4 class="fw-bold">Khazannah Kota Magelang</h4>
+                    </div>
+                    
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div class="mb-3">
+                            <label class="form-label">Enter username or email address</label>
+                            <input type="email" 
+                                   class="form-control @error('email') is-invalid @enderror" 
+                                   name="email" 
+                                   value="{{ old('email') }}" 
+                                   placeholder="Username or email address"
+                                   required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Enter your Password</label>
+                            <div class="position-relative">
+                                <input type="password" 
+                                       class="form-control @error('password') is-invalid @enderror" 
+                                       name="password" 
+                                       placeholder="Password"
+                                       required>
+                                <span class="position-absolute top-50 end-0 translate-middle-y pe-3" 
+                                      onclick="togglePassword(this)">
+                                    <i class="fas fa-eye-slash"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        @error('email')
+                        <div class="alert alert-danger py-2 mb-3">
+                            Email atau Password tidak sama
+                        </div>
+                        @enderror
+
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Tentang Section -->
     <section class="tentang" id="tentang">
@@ -536,4 +587,88 @@
 
         .copyright { margin-top: 40px; }
     }
+
+    .input-field {
+        position: relative;
+    }
+    
+    .input-field i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+    }
+    
+    .input-field input {
+        padding-left: 35px;
+    }
+    
+    .modal-dialog {
+        max-width: 800px;
+    }
+    
+    .modal-content {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    /* Tambahkan CSS berikut */
+    .modal-content {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .form-control {
+        padding: 12px 15px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+    }
+
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+    }
+
+    .btn-primary {
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        background-color: #0d6efd;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    /* Style untuk toggle password */
+    .position-relative .fas {
+        cursor: pointer;
+        color: #666;
+    }
+
+    .position-relative .fas:hover {
+        color: #333;
+    }
 </style>
+
+<script>
+function togglePassword(element) {
+    const passwordInput = element.parentElement.querySelector('input');
+    const icon = element.querySelector('i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    }
+}
+</script>
