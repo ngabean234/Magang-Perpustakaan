@@ -14,44 +14,30 @@ class CategoryTableSeeder extends Seeder
     {
         DB::table('categories')->insert([
             'id' => '1',
-            'name' => 'E-book',
+            'name' => 'E-Book Kota Magelang Massa Dulu',
             'slug' => 'ebook',
-            'photo' => 'c1.png'
+            'photo' => '2.png'
         ]);
 
         DB::table('categories')->insert([
             'id' => '2',
-            'name' => 'Novel',
-            'slug' => 'novel',
-            'photo' => 'c2.jpg'
+            'name' => 'E-Book Kota Magelang Massa Kini',
+            'slug' => 'ebook',
+            'photo' => '2.png'
         ]);
 
         DB::table('categories')->insert([
             'id' => '3',
-            'name' => 'Komputer',
-            'slug' => 'komputer',
-            'photo' => 'c3.jpg'
+            'name' => 'Kliping Kota Magelang',
+            'slug' => 'Kliping',
+            'photo' => '3.png'
         ]);
 
         DB::table('categories')->insert([
             'id' => '4',
-            'name' => 'Kamus',
-            'slug' => 'kamus',
-            'photo' => 'c4.png'
-        ]);
-
-        DB::table('categories')->insert([
-            'id' => '5',
-            'name' => 'Cooking',
-            'slug' => 'cooking',
-            'photo' => 'c5.jpg'
-        ]);
-
-        DB::table('categories')->insert([
-            'id' => '6',
-            'name' => 'Jurnal',
-            'slug' => 'jurnal',
-            'photo' => 'c6.png'
+            'name' => 'Majalah Kota Magelang',
+            'slug' => 'Majalah',
+            'photo' => '1.png'
         ]);
     }
 }
