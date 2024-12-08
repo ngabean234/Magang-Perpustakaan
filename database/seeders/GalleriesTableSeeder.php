@@ -19,7 +19,7 @@ class GalleriesTableSeeder extends Seeder
             [
                 'title' => 'Foto 1',
                 'description' => 'Deskripsi foto 1',
-                'image_path' => 'path/to/default/1.jpg',
+                'image_path' => 'gallery/1.jpg',
                 'author' => 'Penulis 1',
                 'date_taken' => '2024-11-01', // Tanggal dalam format YYYY-MM-DD
                 'location' => 'Lokasi Foto 1',
@@ -29,7 +29,7 @@ class GalleriesTableSeeder extends Seeder
             [
                 'title' => 'Foto 2',
                 'description' => 'Deskripsi foto 2', // Deskripsi bisa null
-                'image_path' => 'path/to/default/2.jpg',
+                'image_path' => 'gallery/2.jpg',
                 'author' => 'Penulis 2',
                 'date_taken' => '2024-11-02',
                 'location' => 'Lokasi Foto 2',
@@ -39,7 +39,7 @@ class GalleriesTableSeeder extends Seeder
             [
                 'title' => 'Foto 3',
                 'description' => 'Deskripsi foto 3', // Deskripsi bisa null
-                'image_path' => 'path/to/default/3.jpg',
+                'image_path' => 'gallery/3.png',
                 'author' => 'Penulis 3',
                 'date_taken' => '2024-11-02',
                 'location' => 'Lokasi Foto 3',
