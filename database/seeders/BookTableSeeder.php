@@ -35,7 +35,7 @@ class BookTableSeeder extends Seeder
             'judul' => 'Contoh buku2',
             'slug' => 'contoh-buku2',
             'cover' => '2.png',
-            'file_path' => 'Buku Dokumentasi Sejarah Kota Magelang Tahun 2013.pdf',
+            'file_path' => '1.pdf',
             'ringkasan' => 'ini adalah ringkasan',
             'penulis' => 'nama penulis',
             'penerbit' => 'nama penerbit',

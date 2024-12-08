@@ -141,8 +141,7 @@
                                 <hr>
                                 <button type="submit" class="btn btn-success btn-block"><i class="fa fa-save"> Simpan</i></button>
                                 <br>
-                                <p>*Untuk Embed flipbook silahkan export terlebih dahulu di https://anyflip.com (max: 100 Halaman untuk versi Free)</p>
-                                <p>*untuk file pdf lebih dari 100 halaman silahkan bagi menjadi beberapa part, buka https://splitapdf.com</p>
+                                <p>*Pastikan untuk mengisi semua form dengan benar.</p>
                             </div>
                         </div>
                     </div>

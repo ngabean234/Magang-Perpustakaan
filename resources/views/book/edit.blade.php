@@ -120,8 +120,12 @@
                                     @if($dt->file_path)
                                     <div class="mb-2">
                                         <div class="d-flex align-items-center">
-                                            <i class="far fa-file-pdf text-danger mr-2" style="font-size: 24px;"></i>
-                                            <span class="mr-2">{{ $dt->file_path }}</span>
+                                            <i class="far fa-file-pdf text-danger mr-2" style="font-size: 20px;"></i>
+                                            <a href="{{ asset('filebook/' . $dt->file_path) }}" 
+                                               target="_blank"
+                                               class="text-primary">
+                                                <span class="mr-2">{{ $dt->file_path }}</span>
+                                            </a>
                                         </div>
                                     </div>
                                     @endif
