@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $key=>$dt)
+                                @foreach($books as $key=>$dt)
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$dt->judul}}</td>
