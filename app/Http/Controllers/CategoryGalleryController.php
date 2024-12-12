@@ -92,6 +92,13 @@ class CategoryGalleryController extends Controller
     {
         $category = CategoryGallery::find($id);
         
+        // Cek apakah kategori masih digunakan oleh galeri
+        $galleriesCount = Gallery::where('category_gallery_id', $id)->count();
+        if ($galleriesCount > 0) {
+            session()->flash('gagal', 'Gagal menghapus kategori karena masih digunakan oleh Galeri.');
+            return redirect()->back();
+        }
+
         try {
             // Hapus file foto jika ada
             if ($category->photo && file_exists(public_path('kategori/' . $category->photo))) {
@@ -102,7 +109,7 @@ class CategoryGalleryController extends Controller
             session()->flash('sukses', 'Data berhasil dihapus!');
             
         } catch(\Exception $e) {
-            session()->flash('gagal', 'Data masih terhubung dengan galeri');
+            session()->flash('gagal', 'Terjadi kesalahan saat menghapus data.');
         }
 
         return redirect()->back();

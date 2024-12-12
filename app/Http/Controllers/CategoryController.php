@@ -13,7 +13,7 @@ class CategoryController extends Controller
     {
         $title = 'Tambah Kategori';
         $data = Category::all();
-        return view('kategory.index', compact('title','data'));
+        return view('kategory.index', compact('title', 'data'));
     }
 
     public function store(Request $request)
@@ -46,7 +46,7 @@ class CategoryController extends Controller
     {
         $title = 'Edit Kategori';
         $dt = Category::find($id);
-        return view('kategory.edit', compact('title','dt'));
+        return view('kategory.edit', compact('title', 'dt'));
     }
 
     public function update(Request $request, $id)
@@ -66,7 +66,7 @@ class CategoryController extends Controller
             if ($data->photo && file_exists(public_path('category/' . $data->photo))) {
                 unlink(public_path('category/' . $data->photo));
             }
-            
+
             $nama_gambar = $file->getClientOriginalName();
             $file->move('category', $nama_gambar);
             $data->photo = $nama_gambar;
@@ -87,24 +87,30 @@ class CategoryController extends Controller
         }]);
         $title = "Kategori : $category->name";
         $kategori = Category::all();
-        return view('category', compact('category', 'title','kategori'));
+        return view('category', compact('category', 'title', 'kategori'));
     }
 
     public function delete($id)
     {
         $category = Category::find($id);
-        
+
+        // Cek apakah kategori masih digunakan oleh buku
+        $booksCount = Book::where('category_id', $id)->count();
+        if ($booksCount > 0) {
+            session()->flash('gagal', 'Gagal menghapus kategori karena masih digunakan oleh Buku.');
+            return redirect()->back();
+        }
+
         try {
             // Hapus file foto jika ada
             if ($category->photo && file_exists(public_path('category/' . $category->photo))) {
                 unlink(public_path('category/' . $category->photo));
             }
-            
+
             $category->delete();
             session()->flash('sukses', 'Data berhasil dihapus!');
-            
-        } catch(\Exception $e) {
-            session()->flash('gagal', 'Data masih terhubung dengan post');
+        } catch (\Exception $e) {
+            session()->flash('gagal', 'Terjadi kesalahan saat menghapus data.');
         }
 
         return redirect()->back();

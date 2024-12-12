@@ -17,8 +17,8 @@ class BookController extends Controller
     public function index()
     {
         $title = 'Data Buku';
-        $data = Book::orderBy('created_at', 'asc')->get();
-        return view('book.index', compact('title', 'data'));
+        $books = Book::orderBy('created_at', 'asc')->get();
+        return view('book.index', compact('title', 'books'));
     }
 
     public function add()
@@ -81,14 +81,8 @@ class BookController extends Controller
 
     public function details($slug)
     {
-        $book = Book::where('slug', $slug)->first();
+        $book = Book::where('slug', $slug)->firstOrFail();
         $title = 'Detail Buku';
-
-        $postkey = 'post_' . $book->id;
-        if (!Session::has($postkey)) {
-            $book->increment('view_count');
-            Session::put($postkey, 1);
-        }
 
         $comment = Comment::all();
         return view('book.details', compact('book', 'title', 'comment'));
@@ -96,7 +90,11 @@ class BookController extends Controller
 
     public function read($slug)
     {
-        $book = Book::where('slug', $slug)->first();
+        $book = Book::where('slug', $slug)->firstOrFail();
+
+        // Increment view count setiap kali "Baca Sekarang" diakses
+        $book->increment('view_count');
+
         return view('book.read', compact('book'));
     }
 

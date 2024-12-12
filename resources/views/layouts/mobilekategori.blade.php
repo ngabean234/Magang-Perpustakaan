@@ -1,6 +1,6 @@
 <div class="row mt-2">
     <div class="col">
-        <a class="btn btn-primary btn-sm btn-flat float-left" href="#"> <i class="fa fa-tag"></i> Kategori</a>
+        <a class="btn btn-primary btn-sm btn-flat float-left" href="#"> <i class="fa fa-tag"></i> Kategori Buku</a>
     </div>
 </div>
 

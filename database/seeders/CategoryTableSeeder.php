@@ -17,7 +17,7 @@ class CategoryTableSeeder extends Seeder
                 'id' => '1',
                 'name' => 'E-Book Kota Magelang Massa Dulu',
                 'slug' => 'ebook-kota-magelang-massa-dulu',
-                'photo' => '1.png',
+                'photo' => '2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

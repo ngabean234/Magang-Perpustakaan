@@ -22,7 +22,7 @@ class CategoryGallerySeeder extends Seeder
                 'id' => '2',
                 'name' => 'Foto Masa Kini',
                 'slug' => 'foto-masa-kini',
-                'photo' => '2.png',
+                'photo' => '3.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

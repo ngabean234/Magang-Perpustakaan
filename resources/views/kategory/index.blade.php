@@ -88,6 +88,7 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function() {
         $('.btn-hapus').click(function(e) {
@@ -97,6 +98,24 @@
             $('#modal-hapus').modal('show');
             $('#modal-hapus').find('form').attr('action', url);
         });
+
+        @if(session('sukses'))
+            Swal.fire({
+                icon: 'success',
+                text: '{{ session('sukses') }}',
+                timer: 3000, // waktu dalam milidetik
+                showConfirmButton: false
+            });
+        @endif
+
+        @if(session('gagal'))
+            Swal.fire({
+                icon: 'error',
+                text: '{{ session('gagal') }}',
+                timer: 3000, // waktu dalam milidetik
+                showConfirmButton: false
+            });
+        @endif
     });
 </script>
 @endsection

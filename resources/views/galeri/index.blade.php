@@ -42,7 +42,15 @@
 </div>
 <hr>
 
-<div class="row">
+<div class="row mt-2">
+    <div class="col">
+        <a class="btn btn-primary btn-sm btn-flat float-left" href="{{ route('galeri.index') }}"> 
+            <i class="fa fa-image"></i> Semua Galeri
+        </a>
+    </div>
+</div>
+
+<div class="row mt-3">
     @if(isset($query))
         @if($galleries->count() > 0)
             @foreach ($galleries as $gallery)
