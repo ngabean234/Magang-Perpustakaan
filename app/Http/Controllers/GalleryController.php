@@ -154,6 +154,15 @@ class GalleryController extends Controller
         return view('galeris.details', compact('gallery', 'title'));
     }
 
+    public function showCategory($slug)
+    {
+        $category = CategoryGallery::where('slug', $slug)->first();
+        $title = 'Kategori ' . $category->name;
+        $galleries = Gallery::where('category_gallery_id', $category->id)->paginate(12);
+        $categoryGalleries = CategoryGallery::all();
+        return view('galeri.index', compact('title', 'galleries', 'categoryGalleries'));
+    }
+
     public function destroy($id)
     {
         try {

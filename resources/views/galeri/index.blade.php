@@ -26,7 +26,7 @@
         </a>
     </div>
 </div>
-{{-- <div class="row mt-3">
+<div class="row mt-3">
     @foreach ($categoryGalleries as $category)
     <div class="col-md-1">
         <a href="{{ route('galeri.category-gallery', $category->slug) }}" style="color: black">
@@ -39,7 +39,7 @@
         </a>
     </div>
     @endforeach
-</div> --}}
+</div>
 <hr>
 
 <div class="row">
@@ -107,7 +107,6 @@
     </ul>
 </div>
 @endif
-
 
 @endsection
 

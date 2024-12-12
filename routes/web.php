@@ -91,6 +91,7 @@ Route::group(['middleware' => 'auth'], function () {
     //galeri
     Route::resource('galeris', GalleryController::class);
     Route::delete('galeris/{id}', [GalleryController::class, 'destroy'])->name('galeris.destroy');
+    Route::get('/galeri/category/{slug}', [GalleryController::class, 'showCategory'])->name('galeri.category-gallery');
 
     //serach
     Route::post('autocomplete/search', [AllbookController::class, 'livesearch'])->name('autocomplete.search');
