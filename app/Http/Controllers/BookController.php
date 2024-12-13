@@ -34,8 +34,8 @@ class BookController extends Controller
         $request->validate([
             'judul' => 'required',
             'ringkasan' => 'required',
-            'cover' => 'required|image|max:10240',  // Validasi cover harus gambar dan maksimal 10MB
-            'file_buku' => 'required|mimes:pdf|max:10240',  // Validasi file PDF dan maksimal 10MB
+            'cover' => 'required|image|max:20480',  // Validasi cover harus gambar dan maksimal 20MB
+            'file_buku' => 'required|mimes:pdf|max:20480',  // Validasi file PDF dan maksimal 20MB
         ]);
 
         // Membuat objek data buku baru

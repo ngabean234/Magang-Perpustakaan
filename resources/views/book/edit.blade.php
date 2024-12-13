@@ -112,6 +112,9 @@
                                     <center>
                                         <p>Image Preview</p>
                                     </center>
+                                    <small class="form-text text-muted">
+                                        Biarkan kosong jika tidak ingin mengubah gambar (jpg/png) dan Max 20MB
+                                    </small>
                                     <hr>
                                 </div>
 
@@ -135,7 +138,7 @@
                                            name="file_buku" 
                                            accept=".pdf">
                                     <small class="form-text text-muted">
-                                        Biarkan kosong jika tidak ingin mengubah file PDF
+                                        Biarkan kosong jika tidak ingin mengubah file PDF dan Max 20MB
                                     </small>
                                     
                                     @error('file_buku')

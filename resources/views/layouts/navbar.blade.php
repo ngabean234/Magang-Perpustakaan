@@ -12,12 +12,24 @@ $com = \App\Models\Comment::whereDay('created_at','=', date('d'))->where('role_i
         </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <a href="#" class="navbar-brand ml-auto">
-        <img src="{{ asset('bk.svg') }}" style="width: 30px; height: 30px" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light"> Khazanah Kota Magelang</span>
-    </a>
+    <!-- Add this style block in the head section of your layout file -->
+<style>
+    .brand-text {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #000000; /* Changed to black */
+        text-shadow: 2px 2px 4px #ffffff; /* Adjusted shadow for better contrast */
+        font-family: 'Arial', sans-serif;
+        letter-spacing: 1px;
+    }
+</style>
+
+<!-- SEARCH FORM -->
+<a href="#" class="navbar-brand ml-auto">
+    {{-- <img src="{{ asset('bk.svg') }}" style="width: 30px; height: 30px" alt="AdminLTE Logo"
+        class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+    <span class="brand-text">Khazanah Kota Magelang</span>
+</a>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
