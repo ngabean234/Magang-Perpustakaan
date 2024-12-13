@@ -28,7 +28,7 @@ class CategoryGalleryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'photo' => 'required|max:10124'
+            'photo' => 'required|image|max:10124'
         ]);
 
         $data = new CategoryGallery();
@@ -61,7 +61,7 @@ class CategoryGalleryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'photo' => 'nullable|mimes:png,jpg,jpeg|max:10124'
+            'photo' => 'nullable|image|max:10124'
         ]);
 
         $data = CategoryGallery::find($id);

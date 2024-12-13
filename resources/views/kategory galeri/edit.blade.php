@@ -41,7 +41,7 @@
                             <input type="file" 
                                    name="photo" 
                                    class="form-control @error('photo') is-invalid @enderror">
-                            <small class="text-muted">Biarkan kosong jika tidak ingin mengubah gambar</small>
+                            <small class="text-muted">Biarkan kosong jika tidak ingin mengubah Gambar (jpg/png) dan Max 10MB</small>
 
                             @error('photo')
                             <span class="invalid-feedback" role="alert">

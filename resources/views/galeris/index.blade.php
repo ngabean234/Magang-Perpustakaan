@@ -52,17 +52,6 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Foto</th>
-                                    <th>Gambar Foto</th>
-                                    <th>Nama Fotografer</th>
-                                    <th>Kategori</th>
-                                    <th>Dibuat</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>

@@ -94,6 +94,9 @@
                                     <center>
                                         <p>Image Preview</p>
                                     </center>
+                                    <small class="form-text text-muted">
+                                        Ukuran Gambar Max 10MB (jpg/png)
+                                    </small>
                                 </div>
                                 <div class="form-group">
                                     <label for="category_gallery_id">Kategori Galeri</label>

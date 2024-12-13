@@ -114,6 +114,9 @@
                                     <center>
                                         <p>Image Preview</p>
                                     </center>
+                                    <small class="form-text text-muted">
+                                        Ukuran Cover Buku Max 10MB (jpg/png)
+                                    </small>
                                     <hr>
                                 </div>
                                 <div class="form-group">
@@ -127,6 +130,9 @@
                                         <strong>*masukan file PDF</strong>
                                     </span>
                                     @enderror
+                                    <small class="form-text text-muted">
+                                        Ukuran File Buku (PDF) Max 20MB
+                                    </small>
                                 </div>
                                 <hr>
                                 <div class="form-group" style="margin-top: -15px">

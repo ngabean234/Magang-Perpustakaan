@@ -63,15 +63,6 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Logo</th>
-                                            <th>Dibuat</th>
-                                            <th>action</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>

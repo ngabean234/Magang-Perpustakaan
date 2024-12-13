@@ -113,7 +113,7 @@
                                         <p>Image Preview</p>
                                     </center>
                                     <small class="form-text text-muted">
-                                        Biarkan kosong jika tidak ingin mengubah gambar (jpg/png) dan Max 20MB
+                                        Biarkan kosong jika tidak ingin mengubah gambar (jpg/png) dan Max 10MB
                                     </small>
                                     <hr>
                                 </div>

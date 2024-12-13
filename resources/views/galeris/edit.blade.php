@@ -92,6 +92,9 @@
                                     <center>
                                         <p>Image Preview</p>
                                     </center>
+                                    <small class="form-text text-muted">
+                                        Biarkan jika tidak ingin mengubah Gambar (jpg/png) dan Max 10MB
+                                    </small>
                                     <hr>
                                     <div class="form-group">
                                         <label for="category_gallery_id">Kategori Galeri</label>

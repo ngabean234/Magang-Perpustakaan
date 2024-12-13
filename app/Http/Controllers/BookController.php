@@ -16,14 +16,14 @@ class BookController extends Controller
 {
     public function index()
     {
-        $title = 'Data Buku';
+        $title = 'Daftar Buku';
         $books = Book::orderBy('created_at', 'asc')->get();
         return view('book.index', compact('title', 'books'));
     }
 
     public function add()
     {
-        $title = 'Tambah data buku';
+        $title = 'Tambah Daftar buku';
         $category = Category::all();
         return view('book.add', compact('title', 'category'));
     }
@@ -34,7 +34,7 @@ class BookController extends Controller
         $request->validate([
             'judul' => 'required',
             'ringkasan' => 'required',
-            'cover' => 'required|image|max:20480',  // Validasi cover harus gambar dan maksimal 20MB
+            'cover' => 'required|image|max:10240',  // Validasi cover harus gambar dan maksimal 10MB
             'file_buku' => 'required|mimes:pdf|max:20480',  // Validasi file PDF dan maksimal 20MB
         ]);
 
@@ -111,8 +111,8 @@ class BookController extends Controller
         $request->validate([
             'judul' => 'required',
             'ringkasan' => 'required',
-            'cover' => 'nullable|image|max:10240',  // Validasi cover opsional
-            'file_buku' => 'nullable|mimes:pdf|max:30720',  // Validasi file PDF opsional
+            'cover' => 'nullable|image|max:10240',  // Validasi cover
+            'file_buku' => 'nullable|mimes:pdf|max:20480',  // Validasi file PDF
         ]);
 
         $data = Book::findOrFail($id);

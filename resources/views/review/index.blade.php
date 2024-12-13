@@ -36,15 +36,6 @@
                                 </tr>
                                 @endforeach
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Review Buku</th>
-                                    <th>Nama</th>
-                                    <th>Waktu</th>
-                                    <th>action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>

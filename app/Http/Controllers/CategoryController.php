@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $title = 'Tambah Kategori';
+        $title = 'Kategori Buku';
         $data = Category::all();
         return view('kategory.index', compact('title', 'data'));
     }
@@ -20,7 +20,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'photo' => 'required|max:10124'
+            'photo' => 'required|image|max:10240',
         ]);
 
         $data = new Category();
@@ -44,7 +44,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $title = 'Edit Kategori';
+        $title = 'Edit Kategori Buku';
         $dt = Category::find($id);
         return view('kategory.edit', compact('title', 'dt'));
     }
@@ -53,7 +53,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'photo' => 'nullable|mimes:png,jpg,jpeg|max:10124'
+            'photo' => 'nullable|image|max:10124'
         ]);
 
         $data = Category::find($id);

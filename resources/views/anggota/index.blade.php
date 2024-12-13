@@ -57,16 +57,6 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Email</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Umur</th>
-                                    <th>action</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>

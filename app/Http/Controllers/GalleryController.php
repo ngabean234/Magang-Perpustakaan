@@ -33,7 +33,7 @@ class GalleryController extends Controller
             'description' => 'required',
             'date_taken' => 'required|date',
             'location' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|max:2048',
             'category_gallery_id' => 'required|exists:category_galleries,id',
         ]);
 
@@ -77,7 +77,7 @@ class GalleryController extends Controller
             'description' => 'required',
             'date_taken' => 'required|date',
             'location' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|max:2048',
             'category_gallery_id' => 'required|exists:category_galleries,id',
         ]);
 
