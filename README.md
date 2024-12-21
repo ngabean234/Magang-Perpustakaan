@@ -3,7 +3,7 @@ email	: admin@gmail.com
 password: 12345678
 
 User Anggota
-email	: user1@gmail.com
+email	: perpus@gmail.com
 password: 12345678
 
 1. Jalankan perintah php artisan migrate, selanjutnya jalankan perintah php artisan db:seed ( jika terjadi error lakukan perintah composer dump-autoload )
