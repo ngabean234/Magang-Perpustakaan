@@ -114,7 +114,7 @@ class BookController extends Controller
             'judul' => 'required',
             'ringkasan' => 'required',
             'cover' => 'nullable|image|max:10240',  // Validasi cover opsional
-            'file_buku' => 'nullable|mimes:pdf|max:10240',  // Validasi file PDF opsional
+            'file_buku' => 'nullable|mimes:pdf|max:30720',  // Validasi file PDF opsional
         ]);
 
         $data = Book::findOrFail($id);
@@ -178,21 +178,26 @@ class BookController extends Controller
     {
         try {
             $book = Book::findOrFail($id);
+            
             // Hapus file cover jika ada
-            if ($book->cover && Storage::exists('public/cover/' . $book->cover)) {
-                Storage::delete('public/cover/' . $book->cover);
+            if ($book->cover && file_exists(public_path('cover/' . $book->cover))) {
+                unlink(public_path('cover/' . $book->cover));
             }
 
-            // Hapus file PDF jika ada
-            if ($book->file_path && Storage::exists('public/filebook/' . $book->file_path)) {
-                Storage::delete('public/filebook/' . $book->file_path);
+            // Hapus file PDF buku jika ada
+            if ($book->file_path && file_exists(public_path('filebook/' . $book->file_path))) {
+                unlink(public_path('filebook/' . $book->file_path));
             }
+
+            // Hapus data dari database
             $book->delete();
-            session()->flash('sukses', 'Data berhasil dihapus!');
+            
+            session()->flash('sukses', 'Data buku berhasil dihapus!');
+            return redirect()->back();
+            
         } catch (\Exception $e) {
-            session()->flash('gagal', 'Terjadi kesalahan: ' . $e->getMessage());
+            session()->flash('error', 'Gagal menghapus buku: ' . $e->getMessage());
+            return redirect()->back();
         }
-
-        return redirect()->back();
     }
 }

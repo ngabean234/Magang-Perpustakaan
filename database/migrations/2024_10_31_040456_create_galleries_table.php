@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('category_gallery_id');
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('image_path');
@@ -22,6 +23,8 @@ return new class extends Migration
             $table->date('date_taken'); // Tanggal Pengambilan
             $table->string('location'); // Lokasi
             $table->timestamps();
+
+            $table->foreign('category_gallery_id')->references('id')->on('category_galleries')->onDelete('cascade');
         });
     }
 

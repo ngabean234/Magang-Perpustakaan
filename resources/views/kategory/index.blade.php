@@ -19,9 +19,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                 <i class="icon fas fa-info"></i>
-                                Note : Jangan delete data kategori selama kategori dipakai untuk post buku, silahkan edit /
-                                ubah jika perlu dan bisa di delete jika sudah tidak terhubung dengan post buku (untuk
-                                mencegah error saat menampilkan data buku)
+                                Note : Jangan menghapus kategori yang masih digunakan di Buku untuk menghindari error pada tampilan Buku.
                             </div>
                         </div>
                     </div>
@@ -87,4 +85,18 @@
     @else
         @include('layouts.404')
     @endif
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.btn-hapus').click(function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            
+            $('#modal-hapus').modal('show');
+            $('#modal-hapus').find('form').attr('action', url);
+        });
+    });
+</script>
 @endsection

@@ -53,7 +53,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'photo' => 'required|mimes:png,jpg,jpeg|max:10124'
+            'photo' => 'nullable|mimes:png,jpg,jpeg|max:10124'
         ]);
 
         $data = Category::find($id);
@@ -63,12 +63,15 @@ class CategoryController extends Controller
         $file = $request->file('photo');
 
         if ($file) {
+            if ($data->photo && file_exists(public_path('category/' . $data->photo))) {
+                unlink(public_path('category/' . $data->photo));
+            }
+            
             $nama_gambar = $file->getClientOriginalName();
             $file->move('category', $nama_gambar);
             $data->photo = $nama_gambar;
         }
 
-        //dd($data);
         $data->save();
 
         session()->flash('sukses', 'Data Kategori berhasil diubah !');
@@ -90,13 +93,17 @@ class CategoryController extends Controller
     public function delete($id)
     {
         $category = Category::find($id);
-        try
-        {
-            $category->delete();
-            session()->flash('sukses', 'Data berhasil dihapus !');
+        
+        try {
+            // Hapus file foto jika ada
+            if ($category->photo && file_exists(public_path('category/' . $category->photo))) {
+                unlink(public_path('category/' . $category->photo));
+            }
             
-        } catch(\Exception $e)
-        {
+            $category->delete();
+            session()->flash('sukses', 'Data berhasil dihapus!');
+            
+        } catch(\Exception $e) {
             session()->flash('gagal', 'Data masih terhubung dengan post');
         }
 

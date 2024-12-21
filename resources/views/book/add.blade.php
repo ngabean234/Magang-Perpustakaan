@@ -74,7 +74,7 @@
                                     <textarea class="textarea @error('ringkasan') is-invalid @enderror"
                                         placeholder="Place some text here" name="ringkasan"
                                         style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                         {{ old('ringkasan') }}</textarea>
+                                        {{ old('ringkasan') }}</textarea>
                                     @error('ringkasan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -121,7 +121,7 @@
                                     <input id="file_buku" type="file"
                                         class="form-control @error('file_buku') is-invalid @enderror" name="file_buku" accept=".pdf"
                                         value="{{ old('file_buku') }}" required autocomplete="off">
-                                
+
                                     @error('file_buku')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>*masukan file PDF</strong>
@@ -141,7 +141,8 @@
                                 <hr>
                                 <button type="submit" class="btn btn-success btn-block"><i class="fa fa-save"> Simpan</i></button>
                                 <br>
-                                <p>*Pastikan untuk mengisi semua form dengan benar.</p>
+                                <p>*Untuk Embed flipbook silahkan export terlebih dahulu di https://anyflip.com (max: 100 Halaman untuk versi Free)</p>
+                                <p>*untuk file pdf lebih dari 100 halaman silahkan bagi menjadi beberapa part, buka https://splitapdf.com</p>
                             </div>
                         </div>
                     </div>

@@ -29,6 +29,7 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PresensiController;
+use App\Http\Controllers\CategoryGalleryController;
 
 Route::get('/', function () {
     return redirect('login');
@@ -89,6 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //galeri
     Route::resource('galeris', GalleryController::class);
+    Route::delete('galeris/{id}', [GalleryController::class, 'destroy'])->name('galeris.destroy');
 
     //serach
     Route::post('autocomplete/search', [AllbookController::class, 'livesearch'])->name('autocomplete.search');
@@ -117,8 +119,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('review/delete/{id}', [ReviewController::class, 'delete']);
     Route::post('balas/{post}/comment', [ReviewController::class, 'store'])->name('balas.review.store');
 
-    //presensi
-    Route::post('/presensi', [PresensiController::class, 'store'])->name('presensi.store');
+    // Routes untuk kategori galeri
+    Route::get('kategory galeri', [CategoryGalleryController::class, 'index'])->name('category-gallery.index');
+    Route::get('kategory galeri/create', [CategoryGalleryController::class, 'create'])->name('category-gallery.create');
+    Route::post('kategory galeri', [CategoryGalleryController::class, 'store'])->name('category-gallery.store');
+    Route::get('kategory galeri/{id}/edit', [CategoryGalleryController::class, 'edit'])->name('category-gallery.edit');
+    Route::put('kategory galeri/{id}', [CategoryGalleryController::class, 'update'])->name('category-gallery.update');
+    Route::delete('kategory galeri/{id}', [CategoryGalleryController::class, 'destroy'])->name('category-gallery.destroy');
+
+    Route::resource('category-gallery', CategoryGalleryController::class);
 });
 
 Route::get('/home', function () {

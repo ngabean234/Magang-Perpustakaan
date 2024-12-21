@@ -22,8 +22,8 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'user1',
-            'email' => 'user1@gmail.com',
+            'name' => 'Perpustakaan',
+            'email' => 'perpus@gmail.com',
             'role_id' => '2',
             'jk' => 'L',
             'umur' => '20',

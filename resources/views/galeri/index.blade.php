@@ -17,7 +17,29 @@
         </form>
     </div>
 </div>
+<hr>
 
+<div class="row mt-2">
+    <div class="col">
+        <a class="btn btn-primary btn-sm btn-flat float-left" href="#"> 
+            <i class="fa fa-tag"></i> Kategori Galeri
+        </a>
+    </div>
+</div>
+{{-- <div class="row mt-3">
+    @foreach ($categoryGalleries as $category)
+    <div class="col-md-1">
+        <a href="{{ route('galeri.category-gallery', $category->slug) }}" style="color: black">
+            <img src="{{ url('kategori/', $category->photo) }}" 
+                 width="30px" 
+                 class="card-img-top"
+                 style="border-bottom-left-radius: 10px;border-bottom-right-radius: 10px" 
+                 alt="{{ $category->name }}">
+            <p class="text-center">{{ $category->name }}</p>
+        </a>
+    </div>
+    @endforeach
+</div> --}}
 <hr>
 
 <div class="row">

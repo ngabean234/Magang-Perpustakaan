@@ -17,7 +17,6 @@ class CreateBooksTable extends Migration
             $table->increments('id');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('category_id')->unsigned();
-            //$table->foreignId('category_id')->constrained()->onDelete('restrict');
             $table->string('judul');
             $table->string('slug');
             $table->string('cover');

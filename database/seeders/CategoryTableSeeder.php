@@ -13,31 +13,38 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'id' => '1',
-            'name' => 'E-Book Kota Magelang Massa Dulu',
-            'slug' => 'ebook',
-            'photo' => '2.png'
-        ]);
-
-        DB::table('categories')->insert([
-            'id' => '2',
-            'name' => 'E-Book Kota Magelang Massa Kini',
-            'slug' => 'ebook',
-            'photo' => '2.png'
-        ]);
-
-        DB::table('categories')->insert([
-            'id' => '3',
-            'name' => 'Kliping Kota Magelang',
-            'slug' => 'Kliping',
-            'photo' => '3.png'
-        ]);
-
-        DB::table('categories')->insert([
-            'id' => '4',
-            'name' => 'Majalah Kota Magelang',
-            'slug' => 'Majalah',
-            'photo' => '1.png'
+            [
+                'id' => '1',
+                'name' => 'E-Book Kota Magelang Massa Dulu',
+                'slug' => 'ebook-kota-magelang-massa-dulu',
+                'photo' => '1.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => '2',
+                'name' => 'E-Book Kota Magelang Massa Kini',
+                'slug' => 'ebook-kota-magelang-massa-kini',
+                'photo' => '2.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => '3',
+                'name' => 'Kliping Kota Magelang',
+                'slug' => 'kliping-kota-magelang',
+                'photo' => '3.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => '4',
+                'name' => 'Majalah Kota Magelang',
+                'slug' => 'majalah-kota-magelang',
+                'photo' => '1.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

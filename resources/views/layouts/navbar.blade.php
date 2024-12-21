@@ -16,7 +16,7 @@ $com = \App\Models\Comment::whereDay('created_at','=', date('d'))->where('role_i
     <a href="#" class="navbar-brand ml-auto">
         <img src="{{ asset('bk.svg') }}" style="width: 30px; height: 30px" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light"> Khazanah</span>
+        <span class="brand-text font-weight-light"> Khazanah Kota Magelang</span>
     </a>
 
     <!-- Right navbar links -->

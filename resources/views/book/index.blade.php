@@ -22,11 +22,11 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Judul</th>
-                                    <th>Author</th>
+                                    <th>Nama Buku</th>
+                                    <th>Cover Buku</th>
                                     <th>Kategori</th>
                                     <th>Dibuat</th>
-                                    <th>action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,17 +34,23 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$dt->judul}}</td>
-                                    <td>{{ $dt->user->name }}</td>
+                                    <td style="text-align: center;">
+                                        <img src="{{ asset('cover/'.$dt->cover) }}" 
+                                            alt="{{ $dt->cover }}" 
+                                            style="width: 100px; height: 70px; object-fit: cover;">
+                                    </td>                                    
                                     <td>{{ $dt->categories->name }}</td>
                                     <td>{{ date('d F Y', strtotime($dt->created_at)) }}</td>
                                     <td>
                                         <a href="{{url('book/edit',$dt->id)}}" id="edit"
                                             class="btn btn-sm btn-flat btn-success"><i class="fa fa-edit"></i> </a>
-                                        <a href="{{url('book/delete', $dt->id)}}" id="delete"
-                                            class="btn btn-sm btn-flat btn-danger btn-hapus"><i class="fa fa-trash"></i>
-                                        </a>
+                                            <a href="#" data-id="{{ url('book/delete', $dt->id) }}" 
+                                                class="btn btn-sm btn-flat btn-danger delete-btn">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
                                         <a href="{{url('book/detail',$dt->id)}}" id="edit"
                                             class="btn btn-sm btn-flat btn-warning"><i class="fa fa-eye"></i> </a>
+                                        
                                     </td>
                                 </tr>
                                 @endforeach
@@ -52,11 +58,11 @@
                             <tfoot>
                                 <tr>
                                     <th>No</th>
-                                    <th>Judul</th>
-                                    <th>Author</th>
+                                    <th>Nama Buku</th>
+                                    <th>Cover Buku</th>
                                     <th>Kategori</th>
                                     <th>Dibuat</th>
-                                    <th>action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -71,4 +77,18 @@
 @else
 @include('layouts.404')
 @endif
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.delete-btn').click(function(e) {
+            e.preventDefault();
+            var url = $(this).data('id');
+            
+            $('#modal-hapus').modal('show');
+            $('#modal-hapus').find('form').attr('action', url);
+        });
+    });
+</script>
 @endsection

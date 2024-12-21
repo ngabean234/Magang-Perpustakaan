@@ -50,6 +50,11 @@
                                         <td>{{ $gallery->location }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Kategori</th>
+                                        <td>:</td>
+                                        <td>{{ $gallery->category ? $gallery->category->name : 'Tanpa Kategori' }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Dibuat</th>
                                         <td>:</td>
                                         <td>{{ date('d F Y', strtotime($gallery->created_at)) }}</td>

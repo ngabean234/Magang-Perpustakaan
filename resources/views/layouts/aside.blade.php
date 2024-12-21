@@ -51,13 +51,19 @@
                 </li>
                 <li class="nav-item has-treeview menu-open">
                     <a href="{{url('kategory')}}" class="nav-link">
-                        <i class="nav-icon fas fa-list"></i>
-                        <p>Kategori</p>
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>Kategori Buku</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview menu-open">
+                    <a href="{{url('kategory galeri')}}" class="nav-link">
+                        <i class="nav-icon fas fa-images"></i>
+                        <p>Kategori Galeri</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview menu-open">
                     <a href="{{url('anggota')}}" class="nav-link">
-                        <i class="nav-icon fas fa-info"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
                             Anggota
                         </p>
@@ -65,7 +71,7 @@
                 </li>
                 <li class="nav-item has-treeview menu-open">
                     <a href="{{url('review')}}" class="nav-link">
-                        <i class="nav-icon fas fa-bookmark"></i>
+                        <i class="nav-icon fas fa-comments "></i>
                         <p>
                             Review
                         </p>
@@ -86,7 +92,7 @@
                     <a href="{{url('/')}}" class="nav-link active">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
-                            Perpustakaan
+                            Buku
                         </p>
                     </a>
                 </li>

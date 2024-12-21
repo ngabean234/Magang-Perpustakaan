@@ -64,20 +64,10 @@
                                     </span>
                                     @enderror
                                 </div>
-                                
-                                {{-- <div class="form-group">
-                                    <label for="description">Deskripsi</label>
-                                    <textarea id="description" class="form-control @error('description') is-invalid @enderror" placeholder="Masukkan deskripsi" name="description" rows="5" style="border: 1px solid #ced4da; border-radius: 0.25rem; padding: 10px;">{{ old('description') }}</textarea>
-                                    @error('description')
-                                    <div class="invalid-feedback" style="display: block;">
-                                        <strong>{{ $message }}</strong>
-                                    </div>
-                                    @enderror
-                                </div> --}}
-                                
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="card card-outline card-info">
                             <div class="card-header">
@@ -89,22 +79,35 @@
                                     <div class="input-group">
                                         <span class="input-group-btn">
                                             <span class="btn btn-default btn-file">
-                                                Browse… <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" required>
-                                                @error('image')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>* Upload Gambar</strong>
-                                                </span>
-                                                @enderror
+                                                Browse… <input type="file" id="imgInp" class="form-control @error('image') is-invalid @enderror" name="image" required accept="image/*">
                                             </span>
                                         </span>
                                         <input type="text" class="form-control" value="Pilih Gambar" readonly>
                                     </div>
+                                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>* Upload Gambar</strong>
+                                    </span>
+                                    @enderror
                                     <hr>
-                                    <img src="" id='img-upload' width="100%" />
+                                    <img src="" id='img-upload' width="100%" style="display: none"/>
                                     <center>
                                         <p>Image Preview</p>
                                     </center>
-                                    <hr>
+                                </div>
+                                <div class="form-group">
+                                    <label for="category_gallery_id">Kategori Galeri</label>
+                                    <select name="category_gallery_id" class="form-control @error('category_gallery_id') is-invalid @enderror" required>
+                                        <option value="">Pilih Kategori Galeri</option>
+                                        @foreach($categoryGalleries as $category)
+                                            <option value="{{ $category->id }}" {{ old('category_gallery_id') == $category->id ? 'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('category_gallery_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn btn-success btn-block"><i class="fa fa-save"> Simpan</i></button>
                                 <br>
@@ -132,29 +135,21 @@
         });
 
         $('.btn-file :file').on('fileselect', function (event, label) {
-            var input = $(this).parents('.input-group').find(':text'),
-                log = label;
-
-            if (input.length) {
-                input.val(log);
-            } else {
-                if (log) alert(log);
-            }
+            var input = $(this).parents('.input-group').find(':text');
+            input.val(label);
         });
 
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-
                 reader.onload = function (e) {
-                    $('#img-upload').attr('src', e.target.result);
+                    $('#img-upload').attr('src', e.target.result).show();
                 }
-
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
-        $("input[type='file']").change(function () {
+        $("#imgInp").change(function () {
             readURL(this);
         });
     });

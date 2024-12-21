@@ -21,10 +21,9 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Foto</th>
-                                    <th>Gambar</th>
-                                    <th>Fotografer</th>
-                                    <th>Tanggal Ambil Foto</th>
-                                    <th>Lokasi</th>
+                                    <th>Gambar Foto</th>
+                                    <th>Nama Fotografer</th>
+                                    <th>Kategori</th>
                                     <th>Dibuat</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -34,18 +33,18 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $gallery->title }}</td>
-                                    <td>
+                                    <td style="text-align: center;">
                                         <img src="{{ asset($gallery->image_path) }}" 
                                             alt="{{ $gallery->title }}" 
                                             style="width: 100px; height: 70px; object-fit: cover;">
                                     </td>
                                     <td>{{ $gallery->author }}</td> <!-- Menampilkan Penulis -->
-                                    <td>{{ \Carbon\Carbon::parse($gallery->date_taken)->format('d F Y') }}</td> <!-- Menggunakan nama kolom yang benar -->
-                                    <td>{{ $gallery->location }}</td> <!-- Menggunakan nama kolom yang benar -->
+                                    <td>{{ $gallery->category ? $gallery->category->name : 'Tanpa Kategori' }}</td>
                                     <td>{{ $gallery->created_at->format('d F Y') }}</td>
                                     <td>
                                         <a href="{{ route('galeris.edit', $gallery->id) }}" class="btn btn-sm btn-flat btn-success"><i class="fa fa-edit"></i></a>
-                                        <a href="{{ route('galeris.destroy', $gallery->id) }}" class="btn btn-sm btn-flat btn-danger btn-hapus">
+                                        <a href="{{ route('galeris.destroy', $gallery->id) }}" 
+                                           class="btn btn-sm btn-flat btn-danger btn-hapus">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                         <a href="{{ route('galeris.show', $gallery->id) }}" class="btn btn-sm btn-flat btn-warning"><i class="fa fa-eye"></i></a>
@@ -57,10 +56,9 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Foto</th>
-                                    <th>Gambar</th>
-                                    <th>Fotografer</th>
-                                    <th>Tanggal Ambil Foto</th>
-                                    <th>Lokasi</th>
+                                    <th>Gambar Foto</th>
+                                    <th>Nama Fotografer</th>
+                                    <th>Kategori</th>
                                     <th>Dibuat</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -75,4 +73,27 @@
 @else
     @include('layouts.404')
 @endif
+
+
+<script>
+    function deleteData(id) {
+        var url = '{{ route("galeris.destroy", ":id") }}';
+        url = url.replace(':id', id);
+        $("#deleteForm").attr('action', url);
+    }
+</script>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.btn-hapus').click(function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            
+            $('#modal-hapus').modal('show');
+            $('#modal-hapus').find('form').attr('action', url);
+        });
+    });
+</script>
 @endsection
