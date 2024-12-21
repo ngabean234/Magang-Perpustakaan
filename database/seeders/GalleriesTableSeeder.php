@@ -19,10 +19,10 @@ class GalleriesTableSeeder extends Seeder
         DB::table('galleries')->insert([
             [
                 'title' => 'Judul Foto 1',
-                'description' => 'Deskripsi foto 1',
-                'image_path' => 'path/to/default/image.jpg',
+                'description' => 'Deskripsi foto masa dulu',
+                'image_path' => 'gallery/1.jpg',
                 'author' => 'Nama Penulis 1',
-                'date_taken' => '2024-11-01', // Tanggal dalam format YYYY-MM-DD
+                'date_taken' => '1990-11-01',
                 'location' => 'Lokasi Foto 1',
                 'category_gallery_id' => '1',
                 'created_at' => now(),
@@ -30,8 +30,8 @@ class GalleriesTableSeeder extends Seeder
             ],
             [
                 'title' => 'Judul Foto 2',
-                'description' => 'Deskripsi foto 1', // Deskripsi bisa null
-                'image_path' => 'path/to/default/image2.jpg',
+                'description' => 'Deskripsi foto masa kini',
+                'image_path' => 'gallery/2.jpg',
                 'author' => 'Nama Penulis 2',
                 'date_taken' => '2024-11-02',
                 'location' => 'Lokasi Foto 2',

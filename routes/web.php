@@ -74,13 +74,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/galeri/details/{id}', [GalleryController::class, 'details'])->name('galeri.details');
     Route::post('/galeri/autocomplete', [GalleryController::class, 'livesearch'])->name('galeri.autocomplete');
     Route::get('/galeri/search', [GalleryController::class, 'search'])->name('galeri.search');
+    Route::delete('galeris/{id}', [GalleryController::class, 'destroy'])->name('galeris.destroy');
+    Route::get('/galeri/category/{slug}', [GalleryController::class, 'showCategory'])->name('galeri.category-gallery');
 
     //about
     Route::get('about', [AboutController::class, 'index']);
-
-    //sumbang
-    //Route::get('sumbang',[SumbangController::class, 'index']);
-    //Route::post('sumbang/add/store',[SumbangController::class, 'store']);
 
     //chat
     Route::get('chat', [ChatController::class, 'index']);
@@ -90,8 +88,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     //galeri
     Route::resource('galeris', GalleryController::class);
-    Route::delete('galeris/{id}', [GalleryController::class, 'destroy'])->name('galeris.destroy');
-    Route::get('/galeri/category/{slug}', [GalleryController::class, 'showCategory'])->name('galeri.category-gallery');
 
     //serach
     Route::post('autocomplete/search', [AllbookController::class, 'livesearch'])->name('autocomplete.search');

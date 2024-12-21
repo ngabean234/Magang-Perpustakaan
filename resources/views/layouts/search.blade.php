@@ -1,6 +1,6 @@
 <div class="row mt-3">
     <div class="col-md-12">
-        <p class="text-center" style="font-size: 20px"> Cari Buku</p>
+        <p class="custom-text" style="font-size: 20px;">Cari Buku</p>
         <form action="{{ url('search') }}" method="get">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="search" id="search" autocomplete="off"
@@ -16,6 +16,13 @@
     </div>
 </div>
 <hr>
+<style>
+    .custom-text {
+        margin: 5px 0 10px 0; /* Remove bottom margin */
+        text-align: left; /* Align text to the left */
+        padding-left: 570px; /* Add left padding to move it slightly to the left */
+    }
+</style>
 
 @section('scripts')
 <script>

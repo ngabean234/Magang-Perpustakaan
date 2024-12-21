@@ -68,11 +68,11 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+  {{-- <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
           <b>&copy; 2024 Universitas Muhammadiyah Magelang</b>
       </div>
-  </footer>
+  </footer> --}}
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

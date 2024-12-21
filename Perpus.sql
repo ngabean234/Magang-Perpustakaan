@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2024 at 07:08 PM
+-- Generation Time: Dec 16, 2024 at 05:02 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,10 +49,10 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `user_id`, `category_id`, `judul`, `slug`, `cover`, `file_path`, `view_count`, `ringkasan`, `penulis`, `penerbit`, `jml_halaman`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Contoh buku1', 'contoh-buku1', '1.jpg', 'Buku Pembangunan Magelang Kota Inda ( The Central of Java ) Dulu dan Sekarang oleh Drs. Sukimin Adi Wiratmoko.pdf', 1, 'ini adalah ringkasan', 'nama penulis', 'nama penerbit', '250', '2024-12-12 10:53:02', '2024-12-12 10:54:07'),
-(2, 1, 2, 'Contoh buku2', 'contoh-buku2', '2.jpg', 'Buku Sejarah Perjuangan MASYARAKAT KOTA MAGELANG Dimasa Perjuangan Phisik Tahun 1945 - 1950 Penerbit DHC Angakatan 45 Kota Magelang Tahun 1998.pdf', 0, 'ini adalah ringkasan', 'nama penulis', 'nama penerbit', '250', '2024-12-12 10:53:02', NULL),
-(3, 1, 3, 'Contoh buku3', 'contoh-buku3', '3.jpg', 'Buku SELAYANG PANDANG KOTAMADYA DATI II MAGELANG TAHUN 1998.pdf', 0, 'ini adalah ringkasan', 'nama penulis', 'nama penerbit', '250', '2024-12-12 10:53:02', NULL),
-(4, 1, 4, 'Contoh buku4', 'contoh-buku4', '4.jpg', 'Buku Seri Dokumentasi SEJARAH PERKEMBANGAN Nama Jalan di Kota Magelang Tahun 2016 seri ke 2.pdf', 0, 'ini adalah ringkasan', 'nama penulis', 'nama penerbit', '250', '2024-12-12 10:53:02', NULL);
+(1, 1, 1, 'Buku Sejarah Perjuangan MASYARAKAT KOTA MAGELANG', 'Buku Sejarah Perjuangan MASYARAKAT KOTA MAGELANG', '2.jpg', 'Buku Sejarah Perjuangan MASYARAKAT KOTA MAGELANG Dimasa Perjuangan Phisik Tahun 1945 - 1950 Penerbit DHC Angakatan 45 Kota Magelang Tahun 1998.pdf', 0, 'Dengan mengucap syukur kepada Tuhan Yang Maha Pengasih lagi Maha Penyayang yang telah memberikan kekuatan dan kemampuan kepada kami Generasi 45, untuk\n                            menulis dan menerbitkan buku Sejarah Pejungan Masyarakat Kota Magelang dan sekitarnya pada masa-masa pejuangan physik melawan penjajah tahun 1945 - 1950.', 'nama penulis', 'nama penerbit', '52', '2024-12-15 21:01:53', NULL),
+(2, 1, 2, 'Buku Pembangunan Magelang Kota Inda', 'Buku Pembangunan Magelang Kota Inda', '2.jpg', 'Buku Pembangunan Magelang Kota Inda ( The Central of Java ) Dulu dan Sekarang oleh Drs. Sukimin Adi Wiratmoko.pdf', 0, 'Kutulis Magelang Indah ini untuk anak-anakku juga para Generasi Muda Magelang umumnya, agar apabila mau membaca, akan\n                            mengetahui sedikit-sedikit tentang Kotanya pada masa yang lampau maupun masa sekarang, dan dapat menggambarkan akar\n                            bagaimana kelayak kemudian harinya.', 'nama penulis', 'nama penerbit', '40', '2024-12-15 21:01:53', NULL),
+(3, 1, 3, 'September 24', 'September 24', 'September 24.jpg', 'September 24.pdf', 0, 'Pemkot Magelang dinobatkan sebagai Pemerintah Daerah dengan Kinerja dan Governasi baiik Tingkat Kota unruk Kategori umum pada Anugerah Pandu Negeri(APN)\n                            tahun 2024.', 'JAWA POS Hal 4rm', 'Radar Magelang', '42', '2024-12-15 21:01:53', NULL),
+(4, 1, 4, 'BACA YUK 10 oke', 'BACA YUK 10 oke', 'baca 10.jpg', 'BACA YUK 10 oke.pdf', 0, 'Pertama-tama yang tidak boleh terlupakan yaitu kita penjatkan puji syukur ke Hadirat Tuhan Yang Maha Esa, karena atas rahmat-Nya Buletin Baca Yuk...!! Perpustakaan\n                            Kota Magelang edisi 10 Tahun 2023 dapat diterbitkan.', 'Perpus Kota Magelang', 'Liputan Utama', '20', '2024-12-15 21:01:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -74,10 +74,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 'E-Book Kota Magelang Massa Dulu', 'ebook-kota-magelang-massa-dulu', '2.png', '2024-12-12 10:53:02', '2024-12-12 10:53:02'),
-(2, 'E-Book Kota Magelang Massa Kini', 'ebook-kota-magelang-massa-kini', '2.png', '2024-12-12 10:53:02', '2024-12-12 10:53:02'),
-(3, 'Kliping Kota Magelang', 'kliping-kota-magelang', '3.png', '2024-12-12 10:53:02', '2024-12-12 10:53:02'),
-(4, 'Majalah Kota Magelang', 'majalah-kota-magelang', '1.png', '2024-12-12 10:53:02', '2024-12-12 10:53:02');
+(1, 'E-Book Kota Magelang Massa Dulu', 'ebook-kota-magelang-massa-dulu', '2.png', '2024-12-15 21:01:53', '2024-12-15 21:01:53'),
+(2, 'E-Book Kota Magelang Massa Kini', 'ebook-kota-magelang-massa-kini', '2.png', '2024-12-15 21:01:53', '2024-12-15 21:01:53'),
+(3, 'Kliping Kota Magelang', 'kliping-kota-magelang', '3.png', '2024-12-15 21:01:53', '2024-12-15 21:01:53'),
+(4, 'Majalah Kota Magelang', 'majalah-kota-magelang', '1.png', '2024-12-15 21:01:53', '2024-12-15 21:01:53');
 
 -- --------------------------------------------------------
 
@@ -99,8 +99,8 @@ CREATE TABLE `category_galleries` (
 --
 
 INSERT INTO `category_galleries` (`id`, `name`, `slug`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 'Foto Masa Dulu', 'foto-masa-dulu', '1.png', '2024-12-12 10:53:02', '2024-12-12 10:53:02'),
-(2, 'Foto Masa Kini', 'foto-masa-kini', '3.png', '2024-12-12 10:53:02', '2024-12-12 10:53:02');
+(1, 'Foto Masa Dulu', 'foto-masa-dulu', '1.png', '2024-12-15 21:01:53', '2024-12-15 21:01:53'),
+(2, 'Foto Masa Kini', 'foto-masa-kini', '3.png', '2024-12-15 21:01:53', '2024-12-15 21:01:53');
 
 -- --------------------------------------------------------
 
@@ -157,9 +157,8 @@ CREATE TABLE `galleries` (
 --
 
 INSERT INTO `galleries` (`id`, `category_gallery_id`, `title`, `description`, `image_path`, `author`, `date_taken`, `location`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Judul Foto 1', 'Deskripsi foto masa dulu', 'gallery/1.jpg', 'Nama Penulis 1', '1990-11-01', 'Lokasi Foto 1', '2024-12-12 10:53:02', '2024-12-12 10:53:02'),
-(2, 2, 'Judul Foto 2', 'Deskripsi foto masa kini', 'gallery/2.jpg', 'Nama Penulis 2', '2024-11-02', 'Lokasi Foto 2', '2024-12-12 10:53:02', '2024-12-12 10:53:02'),
-(3, 2, 'Judul Foto 3', 'Deskripsi foto masa kini', 'gallery/3.png', 'Nama Penulis 3', '2024-11-02', 'Lokasi Foto 2', '2024-12-12 10:53:02', '2024-12-12 10:53:02');
+(1, 1, 'Menara Air Minum', 'Dibangun pada masa Pemerintahan Kolonial Hindia Belanda', 'gallery/1.jpg', 'Thomas Kartsen', '1920-11-01', 'Jl. Alun-alun Kota Magelang', '2024-12-15 21:01:53', '2024-12-15 21:01:53'),
+(2, 2, 'Komplek Rumah Sakit Umum Tidar', 'RSU TIdar dulu milik Zeding yang dikepalai oleh dr Drick Meyr (Belanda) dibukak oleh Zeding pada\n                                tanggal 25 Mei 1932.', 'gallery/RSU tidar.jpg', 'Dr Drick Meyr', '1932-11-02', 'Jl Tidar Magelang', '2024-12-15 21:01:53', '2024-12-15 21:01:53');
 
 -- --------------------------------------------------------
 
@@ -268,8 +267,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `jk`, `umur`, `email_verified_at`, `password`, `photo`, `is_block`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@gmail.com', 'L', 24, NULL, '$2y$10$Fr1qUGE4vEVwYPdOZhR.E.FKFvNDTy8A3oWLpQr3bJAZW1ZcAkseu', NULL, 0, NULL, NULL, NULL),
-(2, 2, 'Perpustakaan', 'perpus@gmail.com', 'L', 20, NULL, '$2y$10$NYWJoZWFglKGMTAUkHKmDu4WHqCRPVbWWy1vo5kR//GDm9EeNpVmS', NULL, 0, NULL, NULL, NULL);
+(1, 1, 'Admin', 'admin@gmail.com', 'L', 24, NULL, '$2y$10$.Y/zqhLvD4WEF2.GX9gjheBU8hQaBHWzr3xHnop5sDQT/OPqOMXCK', NULL, 0, NULL, NULL, NULL),
+(2, 2, 'Perpustakaan', 'perpus@gmail.com', 'L', 20, NULL, '$2y$10$gSKxLnINGiVRcGx361/pyOLFcYrpWI/hg7e3LJch7t5WYUJIWR5RW', NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -283,13 +282,6 @@ CREATE TABLE `visitors` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `visitors`
---
-
-INSERT INTO `visitors` (`id`, `ip_visitor`, `created_at`, `updated_at`) VALUES
-(1, '127.0.0.1', '2024-12-12 10:53:38', NULL);
 
 --
 -- Indexes for dumped tables
@@ -414,7 +406,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -444,7 +436,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

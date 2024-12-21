@@ -13,23 +13,33 @@ $com = \App\Models\Comment::whereDay('created_at','=', date('d'))->where('role_i
     </ul>
 
     <!-- Add this style block in the head section of your layout file -->
-<style>
-    .brand-text {
-        font-weight: bold;
-        font-size: 1.5rem;
-        color: #000000; /* Changed to black */
-        text-shadow: 2px 2px 4px #ffffff; /* Adjusted shadow for better contrast */
-        font-family: 'Arial', sans-serif;
-        letter-spacing: 1px;
-    }
-</style>
+    <style>
+        .brand-text {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #000000; /* Hitam */
+            text-shadow: 2px 2px 4px #ffffff; /* Bayangan untuk kontras */
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 1px;
+        }
+        .brand-subtext {
+            display: block;
+            font-size: 1rem; /* Ukuran lebih kecil */
+            color: #555555; /* Abu-abu */
+            text-align: center; /* Posisikan di tengah */
+            margin-top: -5px; /* Beri jarak kecil */
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+
 
 <!-- SEARCH FORM -->
 <a href="#" class="navbar-brand ml-auto">
     {{-- <img src="{{ asset('bk.svg') }}" style="width: 30px; height: 30px" alt="AdminLTE Logo"
         class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-    <span class="brand-text">Khazanah Kota Magelang</span>
+    <span class="brand-text" style="padding-left: 80px;">Khazanah Kota Magelang</span>
 </a>
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -49,7 +59,7 @@ $com = \App\Models\Comment::whereDay('created_at','=', date('d'))->where('role_i
                 <a href="#" class="dropdown-item">
                     @foreach ($com as $ncom)
                     @if ($ncom->role_id == 1)
-                         
+
                     @else
                        <!-- Message Start -->
                        <div class="media">
@@ -62,7 +72,7 @@ $com = \App\Models\Comment::whereDay('created_at','=', date('d'))->where('role_i
                             <h3 class="dropdown-item-title">
                                 {{ $ncom->user->name }}
                             </h3>
-                            <p>Review : {{$ncom->text}}</p> 
+                            <p>Review : {{$ncom->text}}</p>
                             <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> {{ \Carbon\Carbon::parse($ncom->created_at)->diffForHumans() }}
                             </p>
                         </div>

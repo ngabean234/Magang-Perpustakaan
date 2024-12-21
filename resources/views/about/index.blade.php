@@ -9,11 +9,11 @@
         <b>KOTA MAGELANG</b>
     </div>
     <div class="help-block text-center">
-        Khazanah Kota Magelang adalah layanan Perpustakaan Digital berbasis offline Kota Magelang yang memberikan akses untuk membaca buku, 
+        Khazanah Kota Magelang adalah layanan Perpustakaan Digital berbasis offline Kota Magelang yang memberikan akses untuk membaca buku,
         dan melihat-lihat foto sejarah Kota Magelang.
         <br><br>
     </div>
-    <div class="lockscreen-footer text-center" style="margin-top: 250px;">
+    <div class="lockscreen-footer text-center" style="margin-top: 300px;">
         &copy; 2024 Universitas Muhammadiyah Magelang<br>
         All rights reserved
     </div>
